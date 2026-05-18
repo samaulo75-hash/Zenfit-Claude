@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: zenfit-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: zenfit
+      POSTGRES_USER: zenfit
+      POSTGRES_PASSWORD: zenfit_dev_password
+    ports:
+      - "15432:5432"
+    volumes:
+      - zenfit_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zenfit -d zenfit"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: zenfit-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@zenfit.dev
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - zenfit_pgadmin:/var/lib/pgadmin
+
+volumes:
+  zenfit_pgdata:
+  zenfit_pgadmin:

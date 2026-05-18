@@ -1,0 +1,93 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.zenfit:zenfit-backend >----------------------
+[INFO] Building zenfit-backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.3.5:run (default-cli) > test-compile @ zenfit-backend >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ zenfit-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ zenfit-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ zenfit-backend ---
+[INFO] skip non existing resourceDirectory C:\Users\samau\Desktop\Shum\2 DAM\Proyecto Intermodular\Zenfit Claude\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ zenfit-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:3.3.5:run (default-cli) < test-compile @ zenfit-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.3.5:run (default-cli) @ zenfit-backend ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-05-14T19:21:08.256+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] com.zenfit.ZenfitApplication             : Starting ZenfitApplication using Java 25.0.1 with PID 25740 (C:\Users\samau\Desktop\Shum\2 DAM\Proyecto Intermodular\Zenfit Claude\backend\target\classes started by samau in C:\Users\samau\Desktop\Shum\2 DAM\Proyecto Intermodular\Zenfit Claude\backend)
+2026-05-14T19:21:08.260+02:00 DEBUG 25740 --- [zenfit-backend] [  restartedMain] com.zenfit.ZenfitApplication             : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-05-14T19:21:08.261+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] com.zenfit.ZenfitApplication             : The following 1 profile is active: "dev"
+2026-05-14T19:21:08.322+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-14T19:21:08.322+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-14T19:21:09.334+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-14T19:21:09.360+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 0 JPA repository interfaces.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (file:/C:/Users/samau/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.31/tomcat-embed-core-10.1.31.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-05-14T19:21:10.048+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-05-14T19:21:10.076+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-14T19:21:10.078+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-14T19:21:10.186+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-14T19:21:10.187+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1864 ms
+2026-05-14T19:21:10.569+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-14T19:21:10.790+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@24909202
+2026-05-14T19:21:10.793+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-14T19:21:10.842+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:15432/zenfit (PostgreSQL 16.13)
+2026-05-14T19:21:10.896+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-05-14T19:21:10.901+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.025s)
+2026-05-14T19:21:10.931+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-05-14T19:21:11.004+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-05-14T19:21:11.035+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - initial schema"
+2026-05-14T19:21:11.622+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.564s)
+2026-05-14T19:21:11.743+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-14T19:21:11.823+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-14T19:21:11.871+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-14T19:21:12.227+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-14T19:21:13.798+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-14T19:21:13.891+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-14T19:21:14.575+02:00  WARN 25740 --- [zenfit-backend] [  restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 496bb0a1-233d-417e-82ff-331313fe24fb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-14T19:21:14.593+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-14T19:21:14.805+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-05-14T19:21:14.837+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-05-14T19:21:14.848+02:00  INFO 25740 --- [zenfit-backend] [  restartedMain] com.zenfit.ZenfitApplication             : Started ZenfitApplication in 7.151 seconds (process running for 7.746)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:16 min
+[INFO] Finished at: 2026-05-14T19:22:20+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.3.5:run (default-cli) on project zenfit-backend: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

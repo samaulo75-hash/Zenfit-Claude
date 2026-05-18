@@ -1,0 +1,232 @@
+<template>
+  <nav class="topbar" :class="{ scrolled: isScrolled }">
+    <!-- Logo -->
+    <router-link to="/blog" class="logo">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="8" fill="#1E3A8A"/>
+        <path d="M8 10h16L12 22h16" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="8" y1="28" x2="18" y2="28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">ZENFIT</span>
+    </router-link>
+
+    <!-- Nav links desktop -->
+    <div class="nav-links">
+      <router-link to="/blog" class="nav-link">Blog</router-link>
+      <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+    </div>
+
+    <!-- CTA buttons -->
+    <div class="nav-actions">
+      <template v-if="!isAuth">
+        <router-link to="/login" class="btn-ghost">Iniciar sesión</router-link>
+        <router-link to="/register" class="btn-yellow">Empieza gratis</router-link>
+      </template>
+      <template v-else>
+        <span class="user-name">Hola, {{ userName }}</span>
+        <button class="btn-ghost" @click="logout">Salir</button>
+      </template>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" @click="menuOpen = !menuOpen" aria-label="Menú">
+      <span :class="{ open: menuOpen }"></span>
+      <span :class="{ open: menuOpen }"></span>
+      <span :class="{ open: menuOpen }"></span>
+    </button>
+
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" :class="{ active: menuOpen }">
+      <router-link to="/blog" class="mobile-link" @click="menuOpen = false">Blog</router-link>
+      <router-link to="/dashboard" class="mobile-link" @click="menuOpen = false">Dashboard</router-link>
+      <template v-if="!isAuth">
+        <router-link to="/login" class="mobile-link" @click="menuOpen = false">Iniciar sesión</router-link>
+        <router-link to="/register" class="mobile-cta" @click="menuOpen = false">Empieza gratis →</router-link>
+      </template>
+      <template v-else>
+        <button class="mobile-link" @click="logout">Salir</button>
+      </template>
+    </div>
+  </nav>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuth } from '../../composables/useAuth'
+
+const router = useRouter()
+const menuOpen = ref(false)
+const isScrolled = ref(false)
+const { user, isAuthenticated, logout: doLogout } = useAuth()
+
+const isAuth = isAuthenticated
+const userName = computed(() => user.value?.fullName?.split(' ')[0] || '')
+
+const logout = async () => {
+  await doLogout()
+  router.push('/blog')
+  menuOpen.value = false
+}
+
+const handleScroll = () => { isScrolled.value = window.scrollY > 40 }
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+</script>
+
+<style scoped>
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.topbar.scrolled {
+  border-bottom-color: var(--gray-light);
+  box-shadow: 0 2px 16px rgba(30, 58, 138, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: var(--blue);
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  margin: 0 auto;
+}
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.nav-link:hover, .nav-link.router-link-active { color: var(--blue); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-ghost {
+  background: none;
+  border: 1px solid var(--gray-light);
+  color: var(--dark);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.btn-ghost:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--dark);
+  padding: 9px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s, transform 0.2s;
+  border: none;
+}
+.btn-yellow:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.user-name {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 4px;
+  box-shadow: 0 8px 24px rgba(30,58,138,0.08);
+}
+.mobile-menu.active { display: flex; }
+.mobile-link {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gray-light);
+  font-size: 15px;
+  color: var(--dark);
+  background: none;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s;
+}
+.mobile-link:hover { color: var(--blue-mid); }
+.mobile-cta {
+  margin-top: 12px;
+  background: var(--yellow);
+  color: var(--dark);
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .topbar { padding: 0 20px; }
+  .nav-links, .nav-actions { display: none; }
+  .hamburger { display: flex; }
+}
+</style>

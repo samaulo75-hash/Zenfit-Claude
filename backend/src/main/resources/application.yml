@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: zenfit-backend
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:15432}/${DB_NAME:zenfit}
+    username: ${DB_USER:zenfit}
+    password: ${DB_PASSWORD:zenfit_dev_password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc.lob.non_contextual_creation: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+zenfit:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:change-me-in-production-please-use-a-strong-base64-secret-of-at-least-256-bits}
+      access-token-expiration-ms: 900000          # 15 min
+      refresh-token-expiration-ms: 2592000000     # 30 días
+      issuer: zenfit-api
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:4173
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+logging:
+  level:
+    root: INFO
+    com.zenfit: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
