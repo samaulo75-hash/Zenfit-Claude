@@ -6,7 +6,9 @@ const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
 export const http = axios.create({
   baseURL,
   headers: { 'Content-Type': 'application/json' },
-  timeout: 15000,
+  // 60s: el plan Free de Render "duerme" el backend tras 15 min de inactividad
+  // y el arranque en frío puede tardar 30-60s en la primera petición.
+  timeout: 60000,
 })
 
 // Adjunta Bearer token automáticamente
