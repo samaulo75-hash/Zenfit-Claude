@@ -41,9 +41,7 @@ zenfit:
       refresh-token-expiration-ms: 2592000000     # 30 días
       issuer: zenfit-api
   cors:
-    allowed-origins:
-      - http://localhost:5173
-      - http://localhost:4173
+    allowed-origins: "http://localhost:5173,http://localhost:4173"
 
 springdoc:
   api-docs:

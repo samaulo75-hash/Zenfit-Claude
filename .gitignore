@@ -1,0 +1,30 @@
+# ===== Logs =====
+*.log
+spring-boot*.log
+
+# ===== Backend (Java / Maven) =====
+backend/target/
+!backend/.mvn/wrapper/maven-wrapper.jar
+
+# ===== Frontend (Node / Vite) =====
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# ===== Entorno / secretos =====
+.env
+.env.local
+*.local
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# ===== SO =====
+.DS_Store
+Thumbs.db

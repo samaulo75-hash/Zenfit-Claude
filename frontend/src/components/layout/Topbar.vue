@@ -1,7 +1,7 @@
 <template>
   <nav class="topbar" :class="{ scrolled: isScrolled }">
     <!-- Logo -->
-    <router-link to="/blog" class="logo">
+    <router-link to="/" class="logo">
       <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="8" fill="#1E3A8A"/>
         <path d="M8 10h16L12 22h16" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,8 +12,15 @@
 
     <!-- Nav links desktop -->
     <div class="nav-links">
+      <router-link to="/" class="nav-link" exact-active-class="router-link-active">Inicio</router-link>
       <router-link to="/blog" class="nav-link">Blog</router-link>
-      <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+      <template v-if="isAuth">
+        <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+        <router-link to="/workouts" class="nav-link">Entrenar</router-link>
+        <router-link to="/habits" class="nav-link">Hábitos</router-link>
+        <router-link to="/sleep" class="nav-link">Sueño</router-link>
+        <router-link to="/profile" class="nav-link">Perfil</router-link>
+      </template>
     </div>
 
     <!-- CTA buttons -->
@@ -37,8 +44,15 @@
 
     <!-- Mobile dropdown -->
     <div class="mobile-menu" :class="{ active: menuOpen }">
+      <router-link to="/" class="mobile-link" @click="menuOpen = false">Inicio</router-link>
       <router-link to="/blog" class="mobile-link" @click="menuOpen = false">Blog</router-link>
-      <router-link to="/dashboard" class="mobile-link" @click="menuOpen = false">Dashboard</router-link>
+      <template v-if="isAuth">
+        <router-link to="/dashboard" class="mobile-link" @click="menuOpen = false">Dashboard</router-link>
+        <router-link to="/workouts" class="mobile-link" @click="menuOpen = false">Entrenar</router-link>
+        <router-link to="/habits" class="mobile-link" @click="menuOpen = false">Hábitos</router-link>
+        <router-link to="/sleep" class="mobile-link" @click="menuOpen = false">Sueño</router-link>
+        <router-link to="/profile" class="mobile-link" @click="menuOpen = false">Perfil</router-link>
+      </template>
       <template v-if="!isAuth">
         <router-link to="/login" class="mobile-link" @click="menuOpen = false">Iniciar sesión</router-link>
         <router-link to="/register" class="mobile-cta" @click="menuOpen = false">Empieza gratis →</router-link>
