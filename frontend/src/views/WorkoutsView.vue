@@ -100,7 +100,7 @@ const formatDate = (d) => new Date(d).toLocaleDateString('es-ES', { day: 'numeri
 </script>
 
 <style scoped>
-.page { padding: 100px 48px 60px; max-width: 1100px; margin: 0 auto; }
+.page { padding: 40px 48px 60px; max-width: 1100px; margin: 0 auto; }
 .page-head { margin-bottom: 28px; }
 .page-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }
 .page-title { font-family: var(--font-display); font-size: 40px; letter-spacing: 1px; color: var(--dark); }
@@ -153,7 +153,7 @@ const formatDate = (d) => new Date(d).toLocaleDateString('es-ES', { day: 'numeri
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
 @media (max-width: 768px) {
-  .page { padding: 90px 20px 40px; }
+  .page { padding: 32px 20px 40px; }
   .workout-grid { grid-template-columns: 1fr; }
 }
 </style>

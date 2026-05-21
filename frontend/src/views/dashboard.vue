@@ -116,7 +116,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.dash { padding: 100px 48px 60px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+.dash { padding: 40px 48px 60px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
 .dash-header { display: flex; justify-content: space-between; align-items: flex-start; }
 .dash-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; }
 .dash-title { font-family: var(--font-display); font-size: 44px; letter-spacing: 1px; color: var(--dark); line-height: 1; margin-bottom: 8px; }
@@ -165,7 +165,7 @@ onMounted(async () => {
   .quick-actions { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .dash { padding: 90px 20px 40px; gap: 24px; }
+  .dash { padding: 32px 20px 40px; gap: 24px; }
   .dash-header { flex-direction: column; gap: 16px; }
   .dash-title { font-size: 32px; }
 }

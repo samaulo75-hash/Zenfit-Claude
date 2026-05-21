@@ -3,10 +3,10 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
-            <rect width="40" height="40" rx="8" fill="#1E3A8A"/>
-            <path d="M8 10h16L12 22h16" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="8" y1="28" x2="18" y2="28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="8" fill="#F59E0B"/>
+            <path d="M8 10h16L12 22h16" stroke="#1E3A8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="8" y1="28" x2="18" y2="28" stroke="#1E3A8A" stroke-width="3" stroke-linecap="round"/>
           </svg>
           <span>ZENFIT</span>
         </div>

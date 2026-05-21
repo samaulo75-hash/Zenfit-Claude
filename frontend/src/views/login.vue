@@ -2,12 +2,7 @@
   <div class="auth-page">
     <div class="auth-left">
       <div class="auth-brand">
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-          <rect width="40" height="40" rx="8" fill="#F59E0B"/>
-          <path d="M8 10h16L12 22h16" stroke="#1E3A8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="8" y1="28" x2="18" y2="28" stroke="#1E3A8A" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <span class="brand-name">ZENFIT</span>
+        <img src="@/assets/zenfit.png" alt="ZenFit" class="auth-brand-img" />
       </div>
       <h1 class="auth-headline">Tu cuerpo,<br/><span class="yellow">tu mejor proyecto.</span></h1>
       <p class="auth-sub">Más de 50.000 personas ya mejoran su salud con ZenFit cada día.</p>
@@ -95,8 +90,8 @@ const login = async () => {
   justify-content: center;
   gap: 28px;
 }
-.auth-brand { display: flex; align-items: center; gap: 10px; }
-.brand-name { font-family: var(--font-display); font-size: 20px; letter-spacing: 3px; color: var(--white); }
+.auth-brand { display: flex; align-items: center; }
+.auth-brand-img { height: 56px; width: auto; display: block; }
 .auth-headline {
   font-family: var(--font-display);
   font-size: clamp(40px, 5vw, 64px);

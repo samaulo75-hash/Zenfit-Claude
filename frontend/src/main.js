@@ -4,6 +4,7 @@ import router from './router'
 import { onAuthFailure } from './lib/http'
 import { useAuth } from './composables/useAuth'
 import './assets/main.css'
+import './assets/animations.css'
 
 // Cuando un refresh falla, limpiamos sesión y mandamos a /login
 onAuthFailure(() => {

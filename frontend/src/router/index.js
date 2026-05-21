@@ -9,10 +9,13 @@ import ProfileView from '../views/ProfileView.vue'
 import HabitsView from '../views/HabitsView.vue'
 import SleepView from '../views/SleepView.vue'
 import WorkoutsView from '../views/WorkoutsView.vue'
+import DietsView from '../views/DietsView.vue'
 import MainLayout from '../layouts/MainLayout.vue'
+import AppLayout from '../layouts/AppLayout.vue'
 import { useAuth } from '../composables/useAuth'
 
 const routes = [
+  // Zona pública (barra superior)
   {
     path: '/',
     component: MainLayout,
@@ -20,12 +23,21 @@ const routes = [
       { path: '', component: HomeView },
       { path: 'blog', component: BlogHome },
       { path: 'blog/:slug', component: BlogPost },
-      { path: 'post/:id', redirect: '/blog' },
-      { path: 'dashboard', component: Dashboard, meta: { requiresAuth: true } },
-      { path: 'profile', component: ProfileView, meta: { requiresAuth: true } },
-      { path: 'habits', component: HabitsView, meta: { requiresAuth: true } },
-      { path: 'sleep', component: SleepView, meta: { requiresAuth: true } },
-      { path: 'workouts', component: WorkoutsView, meta: { requiresAuth: true } }
+      { path: 'post/:id', redirect: '/blog' }
+    ]
+  },
+  // Zona privada (barra lateral, sin Inicio/Blog)
+  {
+    path: '/',
+    component: AppLayout,
+    meta: { requiresAuth: true },
+    children: [
+      { path: 'dashboard', component: Dashboard },
+      { path: 'profile', component: ProfileView },
+      { path: 'habits', component: HabitsView },
+      { path: 'sleep', component: SleepView },
+      { path: 'workouts', component: WorkoutsView },
+      { path: 'diets', component: DietsView }
     ]
   },
   { path: '/login', component: Login, meta: { guestOnly: true } },

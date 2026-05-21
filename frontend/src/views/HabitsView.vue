@@ -96,7 +96,7 @@ const remove = async (h) => {
 </script>
 
 <style scoped>
-.page { padding: 100px 48px 60px; max-width: 880px; margin: 0 auto; }
+.page { padding: 40px 48px 60px; max-width: 880px; margin: 0 auto; }
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; gap: 16px; }
 .page-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }
 .page-title { font-family: var(--font-display); font-size: 40px; letter-spacing: 1px; color: var(--dark); }
@@ -145,7 +145,7 @@ const remove = async (h) => {
 .del:hover { opacity: 1; }
 
 @media (max-width: 768px) {
-  .page { padding: 90px 20px 40px; }
+  .page { padding: 32px 20px 40px; }
   .page-head { flex-direction: column; }
   .create-form .row { flex-wrap: wrap; }
 }

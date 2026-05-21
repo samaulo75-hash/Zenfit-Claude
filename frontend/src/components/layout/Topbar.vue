@@ -2,25 +2,13 @@
   <nav class="topbar" :class="{ scrolled: isScrolled }">
     <!-- Logo -->
     <router-link to="/" class="logo">
-      <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="8" fill="#1E3A8A"/>
-        <path d="M8 10h16L12 22h16" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="8" y1="28" x2="18" y2="28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <span class="logo-text">ZENFIT</span>
+      <img src="@/assets/zenfit.png" alt="ZenFit" class="logo-img" />
     </router-link>
 
     <!-- Nav links desktop -->
     <div class="nav-links">
       <router-link to="/" class="nav-link" exact-active-class="router-link-active">Inicio</router-link>
       <router-link to="/blog" class="nav-link">Blog</router-link>
-      <template v-if="isAuth">
-        <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
-        <router-link to="/workouts" class="nav-link">Entrenar</router-link>
-        <router-link to="/habits" class="nav-link">Hábitos</router-link>
-        <router-link to="/sleep" class="nav-link">Sueño</router-link>
-        <router-link to="/profile" class="nav-link">Perfil</router-link>
-      </template>
     </div>
 
     <!-- CTA buttons -->
@@ -30,8 +18,7 @@
         <router-link to="/register" class="btn-yellow">Empieza gratis</router-link>
       </template>
       <template v-else>
-        <span class="user-name">Hola, {{ userName }}</span>
-        <button class="btn-ghost" @click="logout">Salir</button>
+        <router-link to="/dashboard" class="btn-yellow">Ir a mi panel →</router-link>
       </template>
     </div>
 
@@ -46,42 +33,26 @@
     <div class="mobile-menu" :class="{ active: menuOpen }">
       <router-link to="/" class="mobile-link" @click="menuOpen = false">Inicio</router-link>
       <router-link to="/blog" class="mobile-link" @click="menuOpen = false">Blog</router-link>
-      <template v-if="isAuth">
-        <router-link to="/dashboard" class="mobile-link" @click="menuOpen = false">Dashboard</router-link>
-        <router-link to="/workouts" class="mobile-link" @click="menuOpen = false">Entrenar</router-link>
-        <router-link to="/habits" class="mobile-link" @click="menuOpen = false">Hábitos</router-link>
-        <router-link to="/sleep" class="mobile-link" @click="menuOpen = false">Sueño</router-link>
-        <router-link to="/profile" class="mobile-link" @click="menuOpen = false">Perfil</router-link>
-      </template>
       <template v-if="!isAuth">
         <router-link to="/login" class="mobile-link" @click="menuOpen = false">Iniciar sesión</router-link>
         <router-link to="/register" class="mobile-cta" @click="menuOpen = false">Empieza gratis →</router-link>
       </template>
       <template v-else>
-        <button class="mobile-link" @click="logout">Salir</button>
+        <router-link to="/dashboard" class="mobile-cta" @click="menuOpen = false">Ir a mi panel →</router-link>
       </template>
     </div>
   </nav>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 
-const router = useRouter()
 const menuOpen = ref(false)
 const isScrolled = ref(false)
-const { user, isAuthenticated, logout: doLogout } = useAuth()
+const { isAuthenticated } = useAuth()
 
 const isAuth = isAuthenticated
-const userName = computed(() => user.value?.fullName?.split(' ')[0] || '')
-
-const logout = async () => {
-  await doLogout()
-  router.push('/blog')
-  menuOpen.value = false
-}
 
 const handleScroll = () => { isScrolled.value = window.scrollY > 40 }
 onMounted(() => window.addEventListener('scroll', handleScroll))
@@ -115,12 +86,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   gap: 10px;
   text-decoration: none;
 }
-.logo-text {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: 3px;
-  color: var(--blue);
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
 }
+.logo:hover .logo-img { transform: scale(1.04); }
 
 .nav-links {
   display: flex;
