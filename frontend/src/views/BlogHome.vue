@@ -1,62 +1,70 @@
 <template>
   <div class="blog">
-    <header class="blog-hero">
-      <div class="blog-hero-inner">
-        <div class="section-label">Blog ZenFit</div>
-        <h1 class="blog-title">Aprende a sacarle<br/><span class="accent">el máximo a ZenFit</span></h1>
-        <p class="blog-sub">
-          Guías claras sobre cómo usar la app, para qué sirve cada módulo y cómo
-          puede ayudarte a construir hábitos y mejorar tu bienestar.
-        </p>
+    <!-- HERO con imagen de fondo (estilo landing) -->
+    <section class="blog-hero">
+      <div class="hero-content animate-fadeInUp">
+        <i class="fas fa-book-open hero-icon animate-bounce"></i>
+        <h2>Blog ZenFit</h2>
+        <p>Aprende a sacarle el máximo a la app y a tu bienestar</p>
       </div>
-    </header>
+    </section>
 
-    <section class="blog-body">
-      <div class="blog-inner">
-        <!-- Artículo destacado -->
+    <!-- ARTÍCULO DESTACADO -->
+    <section class="destacado-section">
+      <div class="container">
         <router-link
           v-if="featured"
           :to="'/blog/' + featured.slug"
-          class="post-card featured"
+          class="destacado-card"
         >
-          <div class="post-img featured-img">
-            <div class="img-overlay"></div>
-            <span class="post-tag">{{ featured.tag }}</span>
+          <div class="destacado-img">
+            <i class="fas fa-star"></i>
           </div>
-          <div class="post-body">
-            <h2>{{ featured.title }}</h2>
+          <div class="destacado-body">
+            <span class="tag">{{ featured.tag }}</span>
+            <h3>{{ featured.title }}</h3>
             <p>{{ featured.excerpt }}</p>
-            <span class="post-meta">{{ featured.readTime }} de lectura · Leer artículo →</span>
+            <span class="leer">
+              <i class="fas fa-arrow-right"></i> {{ featured.readTime }} de lectura · Leer artículo
+            </span>
           </div>
         </router-link>
+      </div>
+    </section>
 
-        <!-- Resto de artículos -->
-        <div class="posts-grid">
+    <!-- LISTA DE ARTÍCULOS -->
+    <section class="articulos-section">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-newspaper"></i> Todas las guías</h2>
+        <p class="subtitulo">Consejos prácticos para entrenar, descansar y comer mejor</p>
+
+        <div class="articulos-grid">
           <router-link
             v-for="p in rest"
             :key="p.slug"
             :to="'/blog/' + p.slug"
-            class="post-card"
+            class="articulo-card"
           >
-            <div class="post-img">
-              <div class="img-overlay"></div>
-              <span class="post-tag">{{ p.tag }}</span>
+            <div class="articulo-icon">
+              <i :class="iconFor(p.tag)"></i>
             </div>
-            <div class="post-body">
-              <h3>{{ p.title }}</h3>
-              <p>{{ p.excerpt }}</p>
-              <span class="post-meta">{{ p.readTime }} · Leer →</span>
-            </div>
+            <span class="tag">{{ p.tag }}</span>
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.excerpt }}</p>
+            <span class="leer-mini">{{ p.readTime }} · Leer →</span>
           </router-link>
         </div>
       </div>
     </section>
 
-    <section class="blog-cta">
-      <div class="cta-inner">
-        <h2 class="cta-title">Deja de leer. Empieza a hacer.</h2>
-        <p class="cta-desc">Crea tu cuenta gratis y pon en práctica todo lo que cuentan estas guías.</p>
-        <router-link to="/register" class="cta-btn">Crear cuenta gratis →</router-link>
+    <!-- CTA FINAL (estilo landing) -->
+    <section class="cta-final">
+      <div class="container">
+        <h2><i class="fas fa-rocket"></i> Deja de leer. Empieza a hacer.</h2>
+        <p>Crea tu cuenta gratis y pon en práctica todo lo que cuentan estas guías.</p>
+        <router-link to="/register" class="btn-cta">
+          <i class="fas fa-user-plus"></i> Crear cuenta gratis
+        </router-link>
       </div>
     </section>
   </div>
@@ -68,65 +76,103 @@ import { blogPosts } from '../data/blogPosts'
 
 const featured = computed(() => blogPosts.find((p) => p.featured) || blogPosts[0])
 const rest = computed(() => blogPosts.filter((p) => p.slug !== featured.value.slug))
+
+const iconFor = (tag) => ({
+  'Guía': 'fas fa-compass',
+  'Hábitos': 'fas fa-check-circle',
+  'Descanso': 'fas fa-moon',
+  'Fitness': 'fas fa-dumbbell',
+  'Seguimiento': 'fas fa-chart-line',
+  'Concepto': 'fas fa-lightbulb',
+}[tag] || 'fas fa-book')
 </script>
 
 <style scoped>
-.blog { background: var(--white); }
+.blog { background: white; }
 
+/* ===== HERO ===== */
 .blog-hero {
-  padding: 140px 48px 70px;
-  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #EFF6FF 100%);
+  height: 55vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+      url("@/assets/ejercicio.jpg") center/cover no-repeat;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 20px;
 }
-.blog-hero-inner { max-width: 1100px; margin: 0 auto; }
-.section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); margin-bottom: 16px; }
-.blog-title { font-family: var(--font-display); font-size: clamp(40px, 6vw, 68px); line-height: 1.02; letter-spacing: 1px; color: var(--blue); margin-bottom: 20px; }
-.accent { color: var(--yellow); }
-.blog-sub { font-size: 17px; line-height: 1.7; color: var(--gray); max-width: 540px; }
+.hero-content { color: white; }
+.hero-icon { font-size: 56px; margin-bottom: 18px; color: #F2E638; display: inline-block; }
+.blog-hero h2 { font-size: 44px; margin-bottom: 14px; }
+.blog-hero p { font-size: 19px; opacity: 0.9; }
 
-.blog-body { padding: 70px 48px 100px; }
-.blog-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.container { max-width: 1100px; margin: 0 auto; }
 
-.post-card {
-  background: var(--white); border: 1px solid var(--gray-light); border-radius: 20px;
-  overflow: hidden; text-decoration: none; display: flex; flex-direction: column;
-  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+/* ===== DESTACADO ===== */
+.destacado-section { padding: 60px 50px 20px; background: white; }
+.destacado-card {
+  display: flex; background: white; border-radius: 24px; overflow: hidden;
+  text-decoration: none; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.post-card:hover { box-shadow: 0 12px 32px rgba(30,58,138,0.1); transform: translateY(-3px); border-color: var(--blue-pale); }
+.destacado-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); }
+.destacado-img {
+  flex: 0 0 38%;
+  background: linear-gradient(135deg, #F2E638, #e0d422);
+  display: flex; align-items: center; justify-content: center;
+}
+.destacado-img i { font-size: 90px; color: #333; opacity: 0.85; }
+.destacado-body { padding: 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.destacado-body h3 { font-size: 30px; color: #333; line-height: 1.2; }
+.destacado-body p { font-size: 16px; color: #555; line-height: 1.6; }
+.leer { color: #333; font-weight: bold; font-size: 15px; }
+.leer i { color: #F2E638; margin-right: 6px; }
 
-.post-card.featured { flex-direction: row; }
-.post-img { position: relative; overflow: hidden; background: linear-gradient(135deg, #DBEAFE 0%, #EFF6FF 100%); height: 160px; }
-.featured-img { height: auto; min-height: 260px; flex: 0 0 45%; background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #1D4ED8 100%); }
-.img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,58,138,0.15) 0%, transparent 60%); }
-.post-tag {
-  position: absolute; top: 16px; left: 16px; background: var(--yellow); color: var(--dark);
-  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+/* ===== ARTÍCULOS ===== */
+.articulos-section { padding: 60px 50px 80px; background: white; }
+.section-title { text-align: center; color: #333; font-size: 34px; margin-bottom: 12px; }
+.section-title i { color: #F2E638; margin-right: 10px; }
+.subtitulo { text-align: center; color: #777; font-size: 17px; margin-bottom: 45px; }
+.articulos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.articulo-card {
+  background: white; border: 1px solid #eee; border-radius: 20px; padding: 30px;
+  text-decoration: none; display: flex; flex-direction: column; gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+.articulo-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(242, 230, 56, 0.25); border-color: #F2E638; }
+.articulo-icon {
+  width: 64px; height: 64px; background: #F2E638; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 6px;
+  transition: transform 0.3s;
+}
+.articulo-card:hover .articulo-icon { transform: scale(1.1) rotate(360deg); }
+.articulo-icon i { font-size: 28px; color: #333; }
+.tag {
+  align-self: flex-start; background: #fdf9c4; color: #8a7a00;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
   padding: 4px 12px; border-radius: 100px;
 }
-.post-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.post-card.featured .post-body { padding: 36px; justify-content: center; }
-.post-card.featured h2 { font-family: var(--font-display); font-size: 32px; letter-spacing: 0.5px; color: var(--dark); line-height: 1.1; }
-.post-card h3 { font-size: 18px; font-weight: 600; color: var(--dark); line-height: 1.3; }
-.post-card p { font-size: 14px; color: var(--gray); line-height: 1.6; flex: 1; }
-.post-meta { font-size: 13px; color: var(--blue-mid); font-weight: 600; margin-top: auto; }
+.articulo-card h3 { color: #333; font-size: 19px; line-height: 1.3; }
+.articulo-card p { color: #666; font-size: 14px; line-height: 1.6; flex: 1; }
+.leer-mini { color: #333; font-weight: 700; font-size: 13px; }
 
-.posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
-.blog-cta { padding: 90px 48px; background: linear-gradient(135deg, var(--blue) 0%, #1D4ED8 60%, #2563EB 100%); }
-.cta-inner { max-width: 600px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.cta-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 54px); letter-spacing: 1px; line-height: 1; color: var(--white); }
-.cta-desc { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.6; }
-.cta-btn { background: var(--yellow); color: var(--dark); padding: 15px 32px; border-radius: 100px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.2s, opacity 0.2s; box-shadow: 0 4px 20px rgba(245,158,11,0.35); }
-.cta-btn:hover { transform: translateY(-2px); opacity: 0.92; }
-
-@media (max-width: 1024px) {
-  .posts-grid { grid-template-columns: repeat(2, 1fr); }
+/* ===== CTA FINAL ===== */
+.cta-final { background: linear-gradient(135deg, #F2E638, #e0d422); padding: 70px 50px; text-align: center; }
+.cta-final h2 { font-size: 34px; margin-bottom: 14px; color: #333; }
+.cta-final h2 i { margin-right: 10px; }
+.cta-final p { font-size: 17px; color: #555; margin-bottom: 28px; }
+.btn-cta {
+  display: inline-flex; align-items: center; gap: 10px; padding: 15px 35px;
+  background: #333; color: #F2E638; text-decoration: none; border-radius: 50px;
+  font-weight: bold; font-size: 16px; transition: all 0.3s;
 }
+.btn-cta:hover { background: #555; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+
 @media (max-width: 768px) {
-  .blog-hero { padding: 110px 20px 50px; }
-  .blog-body { padding: 50px 20px 70px; }
-  .blog-cta { padding: 60px 20px; }
-  .post-card.featured { flex-direction: column; }
-  .featured-img { flex: none; min-height: 180px; }
-  .posts-grid { grid-template-columns: 1fr; }
+  .blog-hero { height: 42vh; }
+  .blog-hero h2 { font-size: 32px; }
+  .destacado-section, .articulos-section, .cta-final { padding-left: 20px; padding-right: 20px; }
+  .destacado-card { flex-direction: column; }
+  .destacado-img { flex: none; min-height: 160px; }
+  .destacado-body { padding: 28px; }
+  .destacado-body h3 { font-size: 24px; }
+  .section-title { font-size: 26px; }
 }
 </style>
