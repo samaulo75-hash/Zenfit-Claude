@@ -13,6 +13,9 @@
 
     <!-- CTA buttons -->
     <div class="nav-actions">
+      <button class="theme-btn" @click="toggleTheme" :title="theme === 'dark' ? 'Tema claro' : 'Tema oscuro'">
+        {{ theme === 'dark' ? '☀️' : '🌙' }}
+      </button>
       <template v-if="!isAuth">
         <router-link to="/login" class="btn-ghost">Iniciar sesión</router-link>
         <router-link to="/register" class="btn-yellow">Empieza gratis</router-link>
@@ -47,10 +50,12 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
+import { useTheme } from '../../composables/useTheme'
 
 const menuOpen = ref(false)
 const isScrolled = ref(false)
 const { isAuthenticated } = useAuth()
+const { theme, toggle: toggleTheme } = useTheme()
 
 const isAuth = isAuthenticated
 
@@ -116,6 +121,16 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   align-items: center;
   gap: 12px;
 }
+.theme-btn {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.theme-btn:hover { border-color: var(--blue-mid); transform: scale(1.06); }
 .btn-ghost {
   background: none;
   border: 1px solid var(--gray-light);

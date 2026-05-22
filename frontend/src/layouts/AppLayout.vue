@@ -36,6 +36,9 @@
             <span class="user-email">{{ user?.email }}</span>
           </div>
         </div>
+        <button class="theme-toggle" @click="toggleTheme">
+          {{ theme === 'dark' ? '☀️ Tema claro' : '🌙 Tema oscuro' }}
+        </button>
         <button class="logout" @click="logout">Cerrar sesión</button>
       </div>
     </aside>
@@ -51,9 +54,11 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import { useTheme } from '../composables/useTheme'
 
 const router = useRouter()
 const { user, logout: doLogout } = useAuth()
+const { theme, toggle: toggleTheme } = useTheme()
 
 const STORAGE_KEY = 'zenfit.sidebarOpen'
 // Por defecto abierta en escritorio; recuerda la última preferencia
@@ -160,7 +165,7 @@ const logout = async () => {
 .user-meta { display: flex; flex-direction: column; overflow: hidden; }
 .user-name { font-size: 14px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .user-email { font-size: 11px; color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.logout {
+.theme-toggle, .logout {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.18);
   color: rgba(255,255,255,0.85);
@@ -168,6 +173,7 @@ const logout = async () => {
   font-size: 13px; font-weight: 600; font-family: var(--font-body);
   cursor: pointer; transition: background 0.18s, border-color 0.18s;
 }
+.theme-toggle:hover { background: rgba(242,230,56,0.18); border-color: rgba(242,230,56,0.5); color: var(--yellow); }
 .logout:hover { background: rgba(239,68,68,0.18); border-color: rgba(239,68,68,0.5); color: #FCA5A5; }
 
 /* ---- Contenido ---- */

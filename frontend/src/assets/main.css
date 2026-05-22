@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
 
+/* ===== TEMA CLARO (por defecto) ===== */
 :root {
   --blue: #1E3A8A;
   --blue-mid: #2563EB;
@@ -17,15 +18,32 @@
   --font-body: 'DM Sans', sans-serif;
 }
 
+/* ===== TEMA OSCURO ===== */
+:root.dark {
+  --blue: #4F7EE0;          /* azul más luminoso para fondos oscuros */
+  --blue-mid: #60A5FA;
+  --blue-light: #1E293B;    /* "azul claro" pasa a oscuro */
+  --blue-pale: #1E3A5A;
+  --yellow: #F2E638;        /* el amarillo de marca se mantiene */
+  --yellow-light: #2A2812;
+  --yellow-warm: #5C5520;
+  --white: #1F2937;         /* "blanco" pasa a gris oscuro (paneles) */
+  --off-white: #0F172A;     /* fondo principal */
+  --dark: #F9FAFB;          /* "texto oscuro" pasa a claro */
+  --gray: #9CA3AF;
+  --gray-light: #334155;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body, #app {
   width: 100%;
   min-height: 100%;
-  background: var(--white);
+  background: var(--off-white);
   color: var(--dark);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body { overflow-x: hidden; }
