@@ -13,10 +13,12 @@ public record DietPlanResponse(
         DietGoal goal,
         Integer caloriesPerDay,
         String imageUrl,
+        String recipeUrl,
         boolean premium,
+        boolean saved,
         List<DietMealResponse> meals
 ) {
-    public static DietPlanResponse from(DietPlan p, List<DietMealResponse> meals) {
+    public static DietPlanResponse from(DietPlan p, List<DietMealResponse> meals, boolean saved) {
         return new DietPlanResponse(
                 p.getId(),
                 p.getName(),
@@ -24,7 +26,9 @@ public record DietPlanResponse(
                 p.getGoal(),
                 p.getCaloriesPerDay(),
                 p.getImageUrl(),
+                p.getRecipeUrl(),
                 p.isPremium(),
+                saved,
                 meals
         );
     }

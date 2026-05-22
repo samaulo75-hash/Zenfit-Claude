@@ -51,6 +51,9 @@ public class DietPlan {
     @Column(name = "image_url", length = 500)
     private String imageUrl;
 
+    @Column(name = "recipe_url", length = 500)
+    private String recipeUrl;
+
     @Column(name = "is_premium", nullable = false)
     @Builder.Default
     private boolean premium = false;
