@@ -98,8 +98,8 @@ const logout = async () => {
 .toggle {
   position: fixed; top: 18px; left: 18px; z-index: 60;
   width: 42px; height: 42px;
-  background: var(--blue); border: none; border-radius: 10px;
-  color: var(--white); font-size: 18px; cursor: pointer;
+  background: #1E3A8A; border: none; border-radius: 10px;
+  color: #FFFFFF; font-size: 18px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 14px rgba(30,58,138,0.3);
   transition: left 0.25s ease, background 0.2s;
@@ -114,7 +114,9 @@ const logout = async () => {
   position: fixed;
   top: 0; left: 0; bottom: 0;
   width: 250px;
-  background: linear-gradient(180deg, var(--blue) 0%, #16306b 100%);
+  /* Fondo fijo (no usa var --blue) para que la sidebar sea siempre oscura
+     y los textos blancos se lean tanto en tema claro como oscuro */
+  background: linear-gradient(180deg, #1E3A8A 0%, #16306b 100%);
   display: flex;
   flex-direction: column;
   padding: 28px 18px;
