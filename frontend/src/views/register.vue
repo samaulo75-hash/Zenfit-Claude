@@ -4,7 +4,6 @@
       <div class="auth-brand">
         <img src="@/assets/logo.png" alt="ZenFit" class="auth-brand-img" />
       </div>
-      <div class="offer-badge">☀️ 60 días gratis</div>
       <h1 class="auth-headline">Empieza hoy.<br/><span class="yellow">Sin excusas.</span></h1>
       <p class="auth-sub">Crea tu cuenta y accede a planes de sueño, nutrición y entrenamiento totalmente personalizados.</p>
       <div class="auth-perks">
@@ -96,12 +95,15 @@ const register = async () => {
   justify-content: center;
   gap: 24px;
 }
-.auth-brand { display: flex; align-items: center; }
-.auth-brand-img {
-  height: 110px; width: auto; display: block;
-  background: #fff; border-radius: 18px;
+.auth-brand {
+  display: inline-flex;
+  width: fit-content;
+  background: #fff;
+  padding: 16px;
+  border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
+.auth-brand-img { height: 94px; width: auto; display: block; }
 
 .offer-badge {
   display: inline-block;

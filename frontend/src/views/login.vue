@@ -90,12 +90,15 @@ const login = async () => {
   justify-content: center;
   gap: 28px;
 }
-.auth-brand { display: flex; align-items: center; }
-.auth-brand-img {
-  height: 110px; width: auto; display: block;
-  background: #fff; border-radius: 18px;
+.auth-brand {
+  display: inline-flex;
+  width: fit-content;
+  background: #fff;
+  padding: 16px;
+  border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
+.auth-brand-img { height: 94px; width: auto; display: block; }
 .auth-headline {
   font-family: var(--font-display);
   font-size: clamp(40px, 5vw, 64px);
