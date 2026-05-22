@@ -2,7 +2,7 @@
   <nav class="topbar" :class="{ scrolled: isScrolled }">
     <!-- Logo -->
     <router-link to="/" class="logo">
-      <img src="@/assets/logo.png" alt="ZenFit" class="logo-img" />
+      <img src="@/assets/logo-trim.png" alt="ZenFit" class="logo-img" />
     </router-link>
 
     <!-- Nav links desktop -->
@@ -87,7 +87,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   text-decoration: none;
 }
 .logo-img {
-  height: 52px;
+  height: 46px;
   width: auto;
   display: block;
   transition: transform 0.2s ease;

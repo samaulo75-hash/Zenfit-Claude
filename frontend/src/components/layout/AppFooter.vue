@@ -3,7 +3,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="@/assets/logo.png" alt="ZenFit" class="footer-logo-img" />
+          <img src="@/assets/logo-trim.png" alt="ZenFit" class="footer-logo-img" />
         </div>
         <p class="footer-tagline">Tu compañero hacia una vida más saludable.</p>
         <div class="store-badges">
@@ -72,7 +72,7 @@
   margin-bottom: 16px;
 }
 .footer-logo-img {
-  height: 60px;
+  height: 50px;
   width: auto;
   display: block;
 }
