@@ -104,9 +104,10 @@ public class DietService {
         if (fitnessGoal == null) return null;
         return switch (fitnessGoal) {
             case LOSE_WEIGHT -> DietGoal.LOSE_WEIGHT;
-            case GAIN_MUSCLE -> DietGoal.GAIN_MUSCLE;
-            case MAINTAIN -> DietGoal.MAINTAIN;
-            case IMPROVE_ENDURANCE, REDUCE_STRESS, BETTER_SLEEP -> DietGoal.BALANCED;
+            case GAIN_MUSCLE, INCREASE_STRENGTH -> DietGoal.GAIN_MUSCLE;
+            case MAINTAIN, TONE_BODY -> DietGoal.MAINTAIN;
+            case IMPROVE_ENDURANCE, REDUCE_STRESS, BETTER_SLEEP,
+                 INCREASE_FLEXIBILITY, IMPROVE_POSTURE, INCREASE_ENERGY, BUILD_HABITS -> DietGoal.BALANCED;
         };
     }
 }

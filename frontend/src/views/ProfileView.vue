@@ -38,16 +38,22 @@
           <input type="number" v-model.number="form.weightKg" min="0" max="500" step="0.1" placeholder="70" />
         </div>
 
-        <div class="field">
+        <div class="field field-wide">
           <label>Objetivo fitness</label>
           <select v-model="form.fitnessGoal">
             <option :value="null">— Sin especificar —</option>
             <option value="LOSE_WEIGHT">Perder peso</option>
             <option value="GAIN_MUSCLE">Ganar músculo</option>
+            <option value="INCREASE_STRENGTH">Aumentar fuerza</option>
+            <option value="TONE_BODY">Tonificar el cuerpo</option>
             <option value="IMPROVE_ENDURANCE">Mejorar resistencia</option>
+            <option value="INCREASE_FLEXIBILITY">Ganar flexibilidad</option>
+            <option value="IMPROVE_POSTURE">Mejorar la postura</option>
             <option value="MAINTAIN">Mantenerme</option>
+            <option value="INCREASE_ENERGY">Tener más energía</option>
             <option value="REDUCE_STRESS">Reducir estrés</option>
             <option value="BETTER_SLEEP">Dormir mejor</option>
+            <option value="BUILD_HABITS">Construir hábitos saludables</option>
           </select>
         </div>
 
@@ -146,6 +152,7 @@ const save = async () => {
 .form { display: flex; flex-direction: column; gap: 20px; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .field { display: flex; flex-direction: column; gap: 7px; }
+.field-wide { grid-column: 1 / -1; }
 .field label { font-size: 13px; font-weight: 500; color: var(--dark); }
 .field input, .field select, .field textarea {
   background: var(--off-white); border: 1px solid var(--gray-light); color: var(--dark);
