@@ -2,7 +2,7 @@
   <div class="auth-page">
     <div class="auth-left">
       <div class="auth-brand">
-        <img src="@/assets/logo.png" alt="ZenFit" class="auth-brand-img" />
+        <img src="@/assets/logo-trim.png" alt="ZenFit" class="auth-brand-img" />
       </div>
       <h1 class="auth-headline">Empieza hoy.<br/><span class="yellow">Sin excusas.</span></h1>
       <p class="auth-sub">Crea tu cuenta y accede a planes de sueño, nutrición y entrenamiento totalmente personalizados.</p>
@@ -103,7 +103,7 @@ const register = async () => {
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
-.auth-brand-img { height: 94px; width: auto; display: block; }
+.auth-brand-img { height: 72px; width: auto; display: block; }
 
 .offer-badge {
   display: inline-block;
