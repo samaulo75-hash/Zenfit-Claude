@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" :class="{ open }">
       <router-link to="/dashboard" class="brand" @click="closeOnMobile">
-        <img src="@/assets/zenfit.png" alt="ZenFit" class="brand-img" />
+        <img src="@/assets/logo.png" alt="ZenFit" class="brand-img" />
       </router-link>
 
       <nav class="nav">
@@ -121,7 +121,11 @@ const logout = async () => {
 .sidebar.open { transform: translateX(0); }
 
 .brand { display: flex; align-items: center; text-decoration: none; padding: 4px 8px 0; }
-.brand-img { height: 48px; width: auto; display: block; transition: transform 0.2s ease; }
+.brand-img {
+  height: 60px; width: auto; display: block;
+  background: #fff; border-radius: 12px;
+  transition: transform 0.2s ease;
+}
 .brand:hover .brand-img { transform: scale(1.04); }
 
 .nav { display: flex; flex-direction: column; gap: 6px; flex: 1; margin-top: 8px; }

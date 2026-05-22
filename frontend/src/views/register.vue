@@ -2,7 +2,7 @@
   <div class="auth-page">
     <div class="auth-left">
       <div class="auth-brand">
-        <img src="@/assets/zenfit.png" alt="ZenFit" class="auth-brand-img" />
+        <img src="@/assets/logo.png" alt="ZenFit" class="auth-brand-img" />
       </div>
       <div class="offer-badge">☀️ 60 días gratis</div>
       <h1 class="auth-headline">Empieza hoy.<br/><span class="yellow">Sin excusas.</span></h1>
@@ -98,9 +98,9 @@ const register = async () => {
 }
 .auth-brand { display: flex; align-items: center; }
 .auth-brand-img {
-  height: 44px; width: auto; display: block;
-  background: #fff; padding: 9px 16px; border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  height: 110px; width: auto; display: block;
+  background: #fff; border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .offer-badge {
