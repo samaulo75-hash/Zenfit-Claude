@@ -142,7 +142,7 @@ const logout = async () => {
   font-size: 15px; font-weight: 500; text-decoration: none;
   transition: background 0.18s, color 0.18s;
 }
-.nav-item:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+.nav-item:hover { background: rgba(255,255,255,0.08); color: #FFFFFF; }
 .nav-item.active {
   background: var(--yellow);
   color: var(--dark);
@@ -165,7 +165,7 @@ const logout = async () => {
   font-weight: 800; font-size: 16px; flex-shrink: 0;
 }
 .user-meta { display: flex; flex-direction: column; overflow: hidden; }
-.user-name { font-size: 14px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-name { font-size: 14px; font-weight: 600; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .user-email { font-size: 11px; color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .theme-toggle, .logout {
   background: rgba(255,255,255,0.08);
