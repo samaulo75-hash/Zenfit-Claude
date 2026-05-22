@@ -61,6 +61,12 @@ button { font-family: var(--font-body); cursor: pointer; }
    (landing publica + blog). Se aplican cuando <html> tiene la clase .dark.
    ===================================================================== */
 
+/* ===== TOPBAR (cabecera publica) ===== */
+.dark .topbar { background: rgba(15, 23, 42, 0.9); border-bottom-color: transparent; }
+.dark .topbar.scrolled { border-bottom-color: #334155; box-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+.dark .mobile-menu { background: #1F2937; border-color: #334155; }
+.dark .mobile-link { border-bottom-color: #334155; }
+
 /* ===== LANDING ===== */
 .dark .descripcion { background: #0F172A; }
 .dark .descripcion-texto p { color: #CBD5E1; }
