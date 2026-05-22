@@ -117,8 +117,8 @@ const formatDate = (d) => new Date(d).toLocaleDateString('es-ES', { day: 'numeri
   font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
   background: var(--blue-light); color: var(--blue-mid); text-transform: uppercase; letter-spacing: 0.5px;
 }
-.wc-type.hiit, .wc-type.cardio { background: var(--yellow-light); color: #92400E; }
-.wc-type.yoga, .wc-type.mobility { background: #ECFDF5; color: #047857; }
+.wc-type.hiit, .wc-type.cardio { background: var(--yellow-light); color: #1E3A8A; }
+.wc-type.yoga, .wc-type.mobility { background: #EFF6FF; color: #1E3A8A; }
 .wc-premium { font-size: 11px; color: var(--yellow); font-weight: 700; }
 .wc-name { font-size: 20px; font-weight: 700; color: var(--dark); }
 .wc-desc { font-size: 13px; color: var(--gray); }

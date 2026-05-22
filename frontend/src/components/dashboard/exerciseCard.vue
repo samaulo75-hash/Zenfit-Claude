@@ -43,8 +43,8 @@ defineProps({ title: String, time: String, sets: String, image: String })
 }
 .exercise-badge {
   display: inline-block;
-  background: rgba(245,158,11,0.2);
-  border: 1px solid rgba(245,158,11,0.4);
+  background: rgba(242,230,56,0.2);
+  border: 1px solid rgba(242,230,56,0.4);
   color: var(--yellow-warm);
   font-size: 10px;
   font-weight: 700;
@@ -80,7 +80,7 @@ defineProps({ title: String, time: String, sets: String, image: String })
   font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s, transform 0.2s;
-  box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+  box-shadow: 0 4px 16px rgba(242,230,56,0.35);
 }
 .start-btn:hover { opacity: 0.9; transform: scale(1.03); }
 .exercise-info { position: relative; z-index: 1; }

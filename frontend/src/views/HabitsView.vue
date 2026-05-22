@@ -29,7 +29,7 @@
     </div>
 
     <div v-else class="habit-list">
-      <div v-for="h in habits" :key="h.id" class="habit-card" :style="{ borderLeftColor: h.color || '#F59E0B' }">
+      <div v-for="h in habits" :key="h.id" class="habit-card" :style="{ borderLeftColor: h.color || '#F2E638' }">
         <button
           class="check"
           :class="{ done: h.completedToday }"
@@ -60,7 +60,7 @@ const habits = ref([])
 const loading = ref(true)
 const showForm = ref(false)
 const creating = ref(false)
-const newHabit = reactive({ name: '', description: '', icon: '✅', color: '#F59E0B' })
+const newHabit = reactive({ name: '', description: '', icon: '✅', color: '#F2E638' })
 
 const load = async () => {
   habits.value = await habitService.list()
@@ -74,7 +74,7 @@ const create = async () => {
   creating.value = true
   try {
     await habitService.create({ ...newHabit })
-    Object.assign(newHabit, { name: '', description: '', icon: '✅', color: '#F59E0B' })
+    Object.assign(newHabit, { name: '', description: '', icon: '✅', color: '#F2E638' })
     showForm.value = false
     await load()
   } finally {
@@ -133,8 +133,8 @@ const remove = async (h) => {
   background: var(--white); cursor: pointer; font-size: 18px; font-weight: 800; color: var(--white);
   flex-shrink: 0; transition: all 0.2s;
 }
-.check.done { background: #059669; border-color: #059669; }
-.check:hover { border-color: #059669; }
+.check.done { background: #2563EB; border-color: #2563EB; }
+.check:hover { border-color: #2563EB; }
 .habit-main { flex: 1; display: flex; flex-direction: column; gap: 2px; }
 .habit-name { font-size: 15px; font-weight: 600; color: var(--dark); }
 .habit-desc { font-size: 12px; color: var(--gray); }

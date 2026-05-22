@@ -159,11 +159,11 @@ const save = async () => {
 .btn-primary {
   background: var(--yellow); color: var(--dark); border: none; padding: 13px 28px; border-radius: 10px;
   font-size: 15px; font-weight: 700; font-family: var(--font-body); cursor: pointer;
-  box-shadow: 0 4px 16px rgba(245,158,11,0.3); transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(242,230,56,0.3); transition: opacity 0.2s, transform 0.2s;
 }
 .btn-primary:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-.saved { color: #059669; font-size: 14px; font-weight: 600; }
+.saved { color: #2563EB; font-size: 14px; font-weight: 600; }
 .error { color: #DC2626; font-size: 14px; }
 
 @media (max-width: 768px) {

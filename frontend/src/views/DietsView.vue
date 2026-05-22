@@ -118,9 +118,9 @@ const mealLabel = (m) => ({
   font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
   background: var(--blue-light); color: var(--blue-mid); text-transform: uppercase; letter-spacing: 0.5px;
 }
-.dc-goal.lose_weight { background: var(--yellow-light); color: #92400E; }
-.dc-goal.gain_muscle { background: #EEF2FF; color: #4338CA; }
-.dc-goal.vegetarian, .dc-goal.vegan { background: #ECFDF5; color: #047857; }
+.dc-goal.lose_weight { background: var(--yellow-light); color: #1E3A8A; }
+.dc-goal.gain_muscle { background: var(--blue-light); color: var(--blue-mid); }
+.dc-goal.vegetarian, .dc-goal.vegan { background: #EFF6FF; color: #1E3A8A; }
 .dc-kcal { font-size: 12px; font-weight: 700; color: var(--gray); }
 .dc-name { font-size: 20px; font-weight: 700; color: var(--dark); }
 .dc-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }

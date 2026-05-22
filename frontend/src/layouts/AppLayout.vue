@@ -140,7 +140,7 @@ const logout = async () => {
   background: var(--yellow);
   color: var(--dark);
   font-weight: 700;
-  box-shadow: 0 6px 18px rgba(245,158,11,0.35);
+  box-shadow: 0 6px 18px rgba(242,230,56,0.35);
 }
 
 .user-box {

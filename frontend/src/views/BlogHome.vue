@@ -145,7 +145,7 @@ const iconFor = (tag) => ({
 .articulo-card:hover .articulo-icon { transform: scale(1.1) rotate(360deg); }
 .articulo-icon i { font-size: 28px; color: #333; }
 .tag {
-  align-self: flex-start; background: #fdf9c4; color: #8a7a00;
+  align-self: flex-start; background: #FCFBE3; color: #1E3A8A;
   font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
   padding: 4px 12px; border-radius: 100px;
 }

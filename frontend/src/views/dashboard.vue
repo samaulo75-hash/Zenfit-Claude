@@ -125,7 +125,7 @@ onMounted(async () => {
 .dash-streak { display: flex; flex-direction: column; align-items: center; background: var(--yellow-light); border: 1px solid var(--yellow-warm); border-radius: 16px; padding: 16px 24px; gap: 2px; }
 .streak-fire { font-size: 24px; }
 .streak-num { font-family: var(--font-display); font-size: 36px; color: var(--yellow); line-height: 1; }
-.streak-lab { font-size: 11px; color: #92400E; }
+.streak-lab { font-size: 11px; color: #1E3A8A; }
 .loading { color: var(--gray); padding: 60px 0; text-align: center; }
 
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -142,7 +142,7 @@ onMounted(async () => {
 .habit-mini { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-light); }
 .habit-mini:last-child { border-bottom: none; }
 .hm-check { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--gray); border: 2px solid var(--gray-light); }
-.hm-check.done { background: #059669; border-color: #059669; color: #fff; }
+.hm-check.done { background: #2563EB; border-color: #2563EB; color: #fff; }
 .hm-name { flex: 1; font-size: 14px; color: var(--dark); }
 .hm-streak { font-size: 13px; font-weight: 700; color: var(--yellow); }
 .sess-mini { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--gray-light); }

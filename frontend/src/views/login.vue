@@ -118,8 +118,8 @@ const login = async () => {
 }
 .perk-check {
   width: 22px; height: 22px;
-  background: rgba(245,158,11,0.2);
-  border: 1px solid rgba(245,158,11,0.5);
+  background: rgba(242,230,56,0.2);
+  border: 1px solid rgba(242,230,56,0.5);
   color: var(--yellow);
   border-radius: 50%;
   display: flex;
@@ -179,7 +179,7 @@ const login = async () => {
   cursor: pointer;
   margin-top: 4px;
   transition: opacity 0.2s, transform 0.2s;
-  box-shadow: 0 4px 16px rgba(245,158,11,0.3);
+  box-shadow: 0 4px 16px rgba(242,230,56,0.3);
 }
 .submit-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
 .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
