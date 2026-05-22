@@ -55,3 +55,60 @@ button { font-family: var(--font-body); cursor: pointer; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--off-white); }
 ::-webkit-scrollbar-thumb { background: var(--blue-pale); border-radius: 3px; }
+
+/* =====================================================================
+   OVERRIDES DE TEMA OSCURO para componentes con colores hardcodeados
+   (landing publica + blog). Se aplican cuando <html> tiene la clase .dark.
+   ===================================================================== */
+
+/* ===== LANDING ===== */
+.dark .descripcion { background: #0F172A; }
+.dark .descripcion-texto p { color: #CBD5E1; }
+.dark .descripcion-texto strong { color: var(--yellow); }
+
+.dark .llamada-servicios { background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); }
+.dark .llamada-card { background: #1F2937; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.dark .llamada-card p { color: #CBD5E1; }
+.dark .llamada-card strong { color: var(--yellow); }
+
+.dark .beneficio-card { background: rgba(31, 41, 55, 0.95); }
+.dark .beneficio-card h3 { color: #F9FAFB; }
+.dark .beneficio-card p { color: #CBD5E1; }
+
+.dark .faq { background: #0F172A; }
+.dark .faq .subtitulo { color: #CBD5E1; }
+.dark .faq-item { background: #1F2937; }
+.dark .faq-pregunta:hover { background: #2A3441; }
+.dark .faq-pregunta h3 { color: #F9FAFB; }
+.dark .faq-respuesta { color: #CBD5E1; border-top-color: #334155; }
+
+/* ===== BLOG ===== */
+.dark .blog { background: #0F172A; }
+.dark .destacado-section,
+.dark .articulos-section { background: #0F172A; }
+.dark .destacado-card { background: #1F2937; box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+.dark .destacado-body h2 { color: #F9FAFB; }
+.dark .destacado-body p { color: #CBD5E1; }
+.dark .leer { color: #F9FAFB; }
+.dark .section-title { color: #F9FAFB; }
+.dark .blog .subtitulo,
+.dark .articulos-section .subtitulo { color: #CBD5E1; }
+.dark .articulo-card { background: #1F2937; border-color: #334155; }
+.dark .articulo-card h3 { color: #F9FAFB; }
+.dark .articulo-card p { color: #CBD5E1; }
+.dark .leer-mini { color: #F9FAFB; }
+
+/* Pagina de articulo */
+.dark .post-page { background: #0F172A; }
+.dark .post-body { background: #0F172A; }
+.dark .lead { color: #F9FAFB; border-bottom-color: #334155; }
+.dark .post-section h2 { color: #F9FAFB; }
+.dark .post-section p { color: #CBD5E1; }
+.dark .related { border-top-color: #334155; }
+.dark .related h3 { color: #F9FAFB; }
+.dark .related-card { background: #1F2937; border-color: #334155; }
+.dark .related-title { color: #F9FAFB; }
+.dark .related-leer { color: #F9FAFB; }
+
+.dark .not-found h1 { color: #F9FAFB; }
+.dark .not-found p { color: #CBD5E1; }
