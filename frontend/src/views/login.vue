@@ -91,7 +91,11 @@ const login = async () => {
   gap: 28px;
 }
 .auth-brand { display: flex; align-items: center; }
-.auth-brand-img { height: 56px; width: auto; display: block; }
+.auth-brand-img {
+  height: 44px; width: auto; display: block;
+  background: #fff; padding: 9px 16px; border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
 .auth-headline {
   font-family: var(--font-display);
   font-size: clamp(40px, 5vw, 64px);
