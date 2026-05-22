@@ -81,13 +81,16 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 }
 
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
+  background: #fff;
+  padding: 9px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
 }
 .logo-img {
-  height: 46px;
+  height: 34px;
   width: auto;
   display: block;
   transition: transform 0.2s ease;

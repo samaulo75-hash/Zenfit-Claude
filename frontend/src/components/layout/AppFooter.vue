@@ -67,12 +67,17 @@
 }
 .footer-brand { flex: 0 0 260px; }
 .footer-logo {
-  display: flex;
+  display: inline-flex;
+  width: fit-content;
   align-items: center;
-  margin-bottom: 16px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  margin-bottom: 20px;
 }
 .footer-logo-img {
-  height: 50px;
+  height: 64px;
   width: auto;
   display: block;
 }
