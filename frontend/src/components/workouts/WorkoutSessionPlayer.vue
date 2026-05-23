@@ -366,9 +366,17 @@ onBeforeUnmount(() => {
   transition: width 0.4s ease;
 }
 
-/* Pantalla central */
+/* Pantalla central — scrollea cuando el contenido (sobre todo con el panel
+   "Cómo hacerlo" abierto) excede la altura del viewport.
+   - min-height: 0  permite que el flex item pueda encogerse y activar overflow
+   - safe center    centra cuando hay espacio; cuando hay desbordamiento,
+                    vuelve a flex-start para no cortar el contenido por arriba */
 .screen {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex; flex-direction: column; align-items: center; justify-content: safe center;
   padding: 24px 32px; text-align: center; gap: 16px;
 }
 .sub-progress {
