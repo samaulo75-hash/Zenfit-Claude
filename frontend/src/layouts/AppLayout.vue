@@ -106,8 +106,8 @@ const logout = async () => {
 }
 .toggle:hover { background: #16306b; }
 /* Cuando la sidebar está abierta, el botón se coloca dentro de ella */
-.sidebar-open .toggle { left: 198px; background: rgba(255,255,255,0.12); }
-.sidebar-open .toggle:hover { background: rgba(255,255,255,0.22); }
+.sidebar-open .toggle { left: 198px; background: rgba(0,0,0,0.22); }
+.sidebar-open .toggle:hover { background: rgba(0,0,0,0.4); }
 
 /* ---- Sidebar ---- */
 .sidebar {
@@ -142,7 +142,7 @@ const logout = async () => {
   font-size: 15px; font-weight: 500; text-decoration: none;
   transition: background 0.18s, color 0.18s;
 }
-.nav-item:hover { background: rgba(255,255,255,0.08); color: #FFFFFF; }
+.nav-item:hover { background: rgba(0,0,0,0.28); color: #FFFFFF; }
 .nav-item.active {
   background: var(--yellow);
   color: var(--dark);
