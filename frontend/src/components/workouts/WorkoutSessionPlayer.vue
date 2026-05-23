@@ -87,6 +87,31 @@
         </div>
 
         <p v-if="currentExercise.notes" class="notes">💡 {{ currentExercise.notes }}</p>
+
+        <!-- Panel de guia "Cómo hacerlo" — colapsable -->
+        <div v-if="hasGuide" class="guide-block">
+          <button class="guide-toggle" @click="guideOpen = !guideOpen" :aria-expanded="guideOpen">
+            <span>📘 Cómo hacerlo</span>
+            <span class="caret" :class="{ open: guideOpen }">▾</span>
+          </button>
+          <div v-show="guideOpen" class="guide-content">
+            <ol v-if="instructionSteps.length" class="guide-steps">
+              <li v-for="(step, idx) in instructionSteps" :key="idx">{{ step }}</li>
+            </ol>
+            <p v-if="currentExercise.exerciseTips" class="guide-tip">
+              💡 <strong>Tip:</strong> {{ currentExercise.exerciseTips }}
+            </p>
+            <a
+              v-if="currentExercise.exerciseVideoUrl"
+              :href="currentExercise.exerciseVideoUrl"
+              target="_blank"
+              rel="noopener"
+              class="guide-video"
+            >
+              ▶ Ver vídeos de referencia →
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -101,7 +126,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { fitnessService } from '../../services/fitnessService'
 
 const props = defineProps({
@@ -121,6 +146,26 @@ const paused = ref(false)
 const totalSetsDone = ref(0)
 
 const currentExercise = computed(() => props.workout.exercises[currentExerciseIdx.value])
+
+// Panel "Cómo hacerlo" — cerrado por defecto para no distraer del cronómetro.
+const guideOpen = ref(false)
+
+const instructionSteps = computed(() => {
+  const raw = currentExercise.value?.exerciseInstructions || ''
+  return raw
+    .split('\n')
+    .map((s) => s.replace(/^\s*\d+\.\s*/, '').trim()) // quita "1.", "2." si vienen
+    .filter(Boolean)
+})
+
+const hasGuide = computed(() =>
+  instructionSteps.value.length > 0
+  || !!currentExercise.value?.exerciseTips
+  || !!currentExercise.value?.exerciseVideoUrl
+)
+
+// Al cambiar de ejercicio, cierra el panel para empezar limpio
+watch(currentExerciseIdx, () => { guideOpen.value = false })
 
 const totalSetsPlanned = computed(() =>
   props.workout.exercises.reduce((acc, ex) => acc + (ex.sets || 1), 0)
@@ -358,6 +403,49 @@ onBeforeUnmount(() => {
   padding: 10px 18px; border-radius: 12px; font-size: 13px; color: rgba(255,255,255,0.85);
   max-width: 520px; line-height: 1.5;
 }
+
+/* ----- Panel "Cómo hacerlo" ----- */
+.guide-block {
+  width: 100%; max-width: 620px; margin-top: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px; overflow: hidden; text-align: left;
+}
+.guide-toggle {
+  width: 100%; background: transparent; border: none; color: #FFFFFF;
+  padding: 12px 18px; cursor: pointer; font-family: var(--font-body);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 14px; font-weight: 700;
+  transition: background 0.2s;
+}
+.guide-toggle:hover { background: rgba(255,255,255,0.05); }
+.caret { font-size: 14px; transition: transform 0.2s; color: rgba(255,255,255,0.6); }
+.caret.open { transform: rotate(180deg); }
+
+.guide-content {
+  padding: 4px 22px 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.guide-steps {
+  margin: 12px 0 8px;
+  padding-left: 22px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.guide-steps li {
+  font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.85);
+}
+.guide-steps li::marker { color: #F2E638; font-weight: 700; }
+.guide-tip {
+  background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25);
+  padding: 10px 14px; border-radius: 10px; font-size: 13px;
+  color: rgba(255,255,255,0.9); line-height: 1.5; margin-top: 10px;
+}
+.guide-tip strong { color: #60A5FA; }
+.guide-video {
+  display: inline-block; margin-top: 12px;
+  color: #F2E638; font-size: 13px; font-weight: 700;
+  text-decoration: none; transition: opacity 0.2s;
+}
+.guide-video:hover { opacity: 0.85; text-decoration: underline; }
 
 .rest-screen, .work-screen { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .rest-next { font-size: 14px; color: rgba(255,255,255,0.7); }

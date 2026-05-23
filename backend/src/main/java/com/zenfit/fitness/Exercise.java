@@ -40,6 +40,14 @@ public class Exercise {
     @Column(name = "description", columnDefinition = "text")
     private String description;
 
+    /** Pasos numerados de cómo ejecutar el ejercicio (separados por saltos de línea). */
+    @Column(name = "instructions", columnDefinition = "text")
+    private String instructions;
+
+    /** Tip de técnica o error común a evitar (1 frase). */
+    @Column(name = "tips", columnDefinition = "text")
+    private String tips;
+
     @Column(name = "video_url", length = 500)
     private String videoUrl;
 
