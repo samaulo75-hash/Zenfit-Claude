@@ -150,11 +150,19 @@
       <div class="data-row">
         <div class="data-text">
           <strong>Exportar mis datos</strong>
-          <span>Descarga un archivo JSON con tu perfil, hábitos, sueño, sesiones de entrenamiento y dietas personalizadas.</span>
+          <span>Descarga toda tu información — perfil, hábitos, sueño, sesiones de entrenamiento y dietas personalizadas — en el formato que prefieras.</span>
         </div>
-        <button type="button" class="btn-primary" @click="exportData" :disabled="exporting">
-          {{ exporting ? 'Preparando…' : '⬇ Descargar JSON' }}
-        </button>
+        <div class="export-buttons">
+          <button type="button" class="btn-ghost-sm" @click="exportAs('json')" :disabled="exporting">
+            {{ exporting === 'json' ? 'Preparando…' : '{ } JSON' }}
+          </button>
+          <button type="button" class="btn-ghost-sm" @click="exportAs('excel')" :disabled="exporting">
+            {{ exporting === 'excel' ? 'Preparando…' : '📊 Excel' }}
+          </button>
+          <button type="button" class="btn-primary" @click="exportAs('pdf')" :disabled="exporting">
+            {{ exporting === 'pdf' ? 'Preparando…' : '📄 PDF' }}
+          </button>
+        </div>
       </div>
 
       <div class="danger-zone">
@@ -223,6 +231,7 @@ import { useAuth } from '../composables/useAuth'
 import { useTheme } from '../composables/useTheme'
 import { authService } from '../services/authService'
 import { prefs } from '../lib/preferences'
+import { downloadJson, downloadExcel, downloadPdf } from '../lib/dataExporter'
 
 const router = useRouter()
 const { user, logout, clearSession, fetchCurrentUser } = useAuth()
@@ -332,27 +341,20 @@ const saveWakeTime = () => {
 }
 
 // ===== Exportar mis datos =====
-const exporting = ref(false)
-const exportData = async () => {
-  exporting.value = true
+// Soporta JSON / Excel (xlsx) / PDF. exporting guarda el formato en curso
+// ('json' | 'excel' | 'pdf' | null) para mostrar el spinner solo en ese botón.
+const exporting = ref(null)
+const exportAs = async (format) => {
+  exporting.value = format
   try {
-    const res = await authService.exportMyData()
-    const blob = new Blob([res.data], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    // Intenta usar el filename del header; si no, usa uno por defecto con la fecha
-    const disp = res.headers?.['content-disposition'] || ''
-    const match = disp.match(/filename="?([^"]+)"?/)
-    a.download = match?.[1] || `zenfit-export-${new Date().toISOString().slice(0, 10)}.json`
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    URL.revokeObjectURL(url)
+    const data = await authService.exportMyData()
+    if (format === 'json') downloadJson(data)
+    else if (format === 'excel') await downloadExcel(data)
+    else if (format === 'pdf') await downloadPdf(data)
   } catch (e) {
     alert(e?.response?.data?.message || 'No se pudo descargar el archivo')
   } finally {
-    exporting.value = false
+    exporting.value = null
   }
 }
 
@@ -457,6 +459,16 @@ const doLogout = async () => {
   font-family: var(--font-body); cursor: pointer; transition: border-color 0.2s, color 0.2s;
 }
 .btn-ghost:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+
+.btn-ghost-sm {
+  background: transparent; border: 1px solid var(--gray-light); color: var(--dark);
+  padding: 11px 18px; border-radius: 10px; font-size: 13px; font-weight: 600;
+  font-family: var(--font-body); cursor: pointer; transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost-sm:hover:not(:disabled) { border-color: var(--blue-mid); color: var(--blue-mid); }
+.btn-ghost-sm:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.export-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .btn-danger {
   background: transparent; border: 1px solid rgba(239,68,68,0.5); color: #DC2626;

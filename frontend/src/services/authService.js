@@ -47,8 +47,9 @@ export const authService = {
   },
 
   async exportMyData() {
-    // Descarga el JSON como Blob para preservar el filename
-    const res = await http.get('/users/me/export', { responseType: 'blob' })
-    return res
+    // Devuelve los datos en JSON parseado para que el cliente pueda generar
+    // diferentes formatos (json, excel, pdf) a partir del mismo payload.
+    const { data } = await http.get('/users/me/export')
+    return data
   },
 }
