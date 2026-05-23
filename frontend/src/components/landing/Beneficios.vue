@@ -57,7 +57,7 @@ export default {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   opacity: 0; animation: fadeInUp 0.6s ease forwards;
 }
-.beneficio-card:hover { transform: translateY(-10px) scale(1.02); background: white; box-shadow: 0 20px 40px rgba(242, 230, 56, 0.3); }
+.beneficio-card:hover { transform: translateY(-10px) scale(1.02); background: var(--white); box-shadow: 0 20px 40px rgba(242, 230, 56, 0.3); }
 .beneficio-icon {
   width: 80px; height: 80px; background: #F2E638; border-radius: 50%;
   display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
