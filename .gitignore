@@ -2,6 +2,10 @@
 *.log
 spring-boot*.log
 
+# ===== Temporales del workflow =====
+.commitmsg.tmp
+*.commitmsg.tmp
+
 # ===== Backend (Java / Maven) =====
 backend/target/
 !backend/.mvn/wrapper/maven-wrapper.jar
