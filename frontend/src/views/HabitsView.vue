@@ -115,7 +115,7 @@ const remove = async (h) => {
 .color-input { max-width: 50px; padding: 4px !important; flex: 0 0 auto !important; cursor: pointer; }
 
 .btn-primary {
-  background: var(--yellow); color: var(--dark); border: none; padding: 11px 22px; border-radius: 10px;
+  background: var(--yellow); color: #1E3A8A; border: none; padding: 11px 22px; border-radius: 10px;
   font-size: 14px; font-weight: 700; font-family: var(--font-body); cursor: pointer; white-space: nowrap;
   transition: opacity 0.2s, transform 0.2s;
 }

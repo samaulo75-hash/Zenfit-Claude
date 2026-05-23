@@ -72,7 +72,7 @@ defineProps({ title: String, time: String, sets: String, image: String })
 .meta-icon { font-size: 14px; }
 .start-btn {
   background: var(--yellow);
-  color: var(--dark);
+  color: #1E3A8A;
   border: none;
   padding: 10px 22px;
   border-radius: 100px;

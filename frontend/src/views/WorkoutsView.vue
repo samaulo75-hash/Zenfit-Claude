@@ -129,7 +129,7 @@ const formatDate = (d) => new Date(d).toLocaleDateString('es-ES', { day: 'numeri
 .wc-ex li { font-size: 13px; color: var(--dark); display: flex; justify-content: space-between; }
 .ex-detail { color: var(--gray); font-size: 12px; }
 .btn-primary {
-  background: var(--yellow); color: var(--dark); border: none; padding: 12px; border-radius: 10px;
+  background: var(--yellow); color: #1E3A8A; border: none; padding: 12px; border-radius: 10px;
   font-size: 14px; font-weight: 700; cursor: pointer; margin-top: auto;
   transition: opacity 0.2s, transform 0.2s;
 }

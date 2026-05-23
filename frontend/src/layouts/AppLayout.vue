@@ -145,7 +145,7 @@ const logout = async () => {
 .nav-item:hover { background: rgba(0,0,0,0.28); color: #FFFFFF; }
 .nav-item.active {
   background: var(--yellow);
-  color: var(--dark);
+  color: #1E3A8A;
   font-weight: 700;
   box-shadow: 0 6px 18px rgba(242,230,56,0.35);
 }
@@ -160,7 +160,7 @@ const logout = async () => {
 .user-row { display: flex; align-items: center; gap: 12px; padding: 0 6px; }
 .avatar {
   width: 38px; height: 38px; border-radius: 50%;
-  background: var(--yellow); color: var(--dark);
+  background: var(--yellow); color: #1E3A8A;
   display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: 16px; flex-shrink: 0;
 }

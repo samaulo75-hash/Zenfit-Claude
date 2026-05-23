@@ -175,7 +175,7 @@ const register = async () => {
 
 .submit-btn {
   background: var(--yellow);
-  color: var(--dark);
+  color: #1E3A8A;
   border: none;
   padding: 14px;
   border-radius: 10px;

@@ -127,7 +127,7 @@ const qualityEmoji = (q) => ['—', '😫', '😕', '😐', '🙂', '😴'][q ||
 .field input:focus, .field select:focus { border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
 .actions { display: flex; align-items: center; gap: 16px; }
 .btn-primary {
-  background: var(--yellow); color: var(--dark); border: none; padding: 13px 28px; border-radius: 10px;
+  background: var(--yellow); color: #1E3A8A; border: none; padding: 13px 28px; border-radius: 10px;
   font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(242,230,56,0.3);
   transition: opacity 0.2s, transform 0.2s;
 }

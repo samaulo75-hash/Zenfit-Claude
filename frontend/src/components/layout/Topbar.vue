@@ -148,7 +148,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 .btn-yellow {
   background: var(--yellow);
-  color: var(--dark);
+  color: #1E3A8A;
   padding: 9px 22px;
   border-radius: 100px;
   font-size: 13px;
@@ -219,7 +219,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 .mobile-cta {
   margin-top: 12px;
   background: var(--yellow);
-  color: var(--dark);
+  color: #1E3A8A;
   padding: 14px 20px;
   border-radius: 10px;
   font-weight: 600;

@@ -164,7 +164,7 @@ const save = async () => {
 }
 .actions { display: flex; align-items: center; gap: 16px; }
 .btn-primary {
-  background: var(--yellow); color: var(--dark); border: none; padding: 13px 28px; border-radius: 10px;
+  background: var(--yellow); color: #1E3A8A; border: none; padding: 13px 28px; border-radius: 10px;
   font-size: 15px; font-weight: 700; font-family: var(--font-body); cursor: pointer;
   box-shadow: 0 4px 16px rgba(242,230,56,0.3); transition: opacity 0.2s, transform 0.2s;
 }
