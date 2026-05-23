@@ -55,6 +55,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { habitService } from '../services/habitService'
+import { confirmDestructive } from '../lib/preferences'
 
 const habits = ref([])
 const loading = ref(true)
@@ -89,7 +90,7 @@ const toggle = async (h) => {
 }
 
 const remove = async (h) => {
-  if (!confirm(`¿Eliminar el hábito "${h.name}"?`)) return
+  if (!confirmDestructive(`¿Eliminar el hábito "${h.name}"?`)) return
   await habitService.remove(h.id)
   await load()
 }

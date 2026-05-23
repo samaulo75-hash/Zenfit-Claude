@@ -184,6 +184,7 @@
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue'
 import { dietService } from '../services/dietService'
+import { confirmDestructive } from '../lib/preferences'
 
 const plans = ref([])
 const loading = ref(true)
@@ -376,7 +377,7 @@ const saveEditor = async () => {
 }
 
 const removeMine = async (d) => {
-  if (!confirm(`¿Eliminar "${d.name}"?`)) return
+  if (!confirmDestructive(`¿Eliminar "${d.name}"?`)) return
   try {
     await dietService.deleteMyDiet(d.id)
     myDiets.value = myDiets.value.filter((x) => x.id !== d.id)

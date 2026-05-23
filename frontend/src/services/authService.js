@@ -36,4 +36,19 @@ export const authService = {
   async resetPassword({ token, newPassword }) {
     await http.post('/auth/reset-password', { token, newPassword })
   },
+
+  async updateMe({ fullName }) {
+    const { data } = await http.patch('/users/me', { fullName })
+    return data
+  },
+
+  async deleteMe() {
+    await http.delete('/users/me')
+  },
+
+  async exportMyData() {
+    // Descarga el JSON como Blob para preservar el filename
+    const res = await http.get('/users/me/export', { responseType: 'blob' })
+    return res
+  },
 }

@@ -106,6 +106,7 @@
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue'
 import { sleepService } from '../services/sleepService'
+import { confirmDestructive } from '../lib/preferences'
 
 const today = computed(() => new Date().toISOString().slice(0, 10))
 const logs = ref([])
@@ -207,7 +208,7 @@ const save = async () => {
 }
 
 const remove = async (l) => {
-  if (!confirm('¿Eliminar este registro?')) return
+  if (!confirmDestructive('¿Eliminar este registro?')) return
   await sleepService.remove(l.id)
   await load()
 }
