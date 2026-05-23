@@ -24,4 +24,28 @@ export const dietService = {
   async unsave(id) {
     await http.delete(`/diets/${id}/save`)
   },
+
+  // ===== Catálogo de alimentos =====
+  async foods(q) {
+    const query = q ? `?q=${encodeURIComponent(q)}` : ''
+    const { data } = await http.get(`/foods${query}`)
+    return data
+  },
+
+  // ===== Dietas personalizadas del usuario =====
+  async myDiets() {
+    const { data } = await http.get('/diets/mine')
+    return data
+  },
+  async createMyDiet(payload) {
+    const { data } = await http.post('/diets/mine', payload)
+    return data
+  },
+  async updateMyDiet(id, payload) {
+    const { data } = await http.put(`/diets/mine/${id}`, payload)
+    return data
+  },
+  async deleteMyDiet(id) {
+    await http.delete(`/diets/mine/${id}`)
+  },
 }
