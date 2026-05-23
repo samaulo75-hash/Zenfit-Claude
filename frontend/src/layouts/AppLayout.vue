@@ -28,19 +28,16 @@
         </router-link>
       </nav>
 
-      <div class="user-box">
+      <router-link to="/settings" class="user-box" @click="closeOnMobile">
         <div class="user-row">
           <div class="avatar">{{ initial }}</div>
           <div class="user-meta">
             <span class="user-name">{{ user?.fullName || 'Usuario' }}</span>
             <span class="user-email">{{ user?.email }}</span>
           </div>
+          <span class="user-gear" aria-hidden="true">⚙️</span>
         </div>
-        <button class="theme-toggle" @click="toggleTheme">
-          {{ theme === 'dark' ? '☀️ Tema claro' : '🌙 Tema oscuro' }}
-        </button>
-        <button class="logout" @click="logout">Cerrar sesión</button>
-      </div>
+      </router-link>
     </aside>
 
     <!-- Contenido -->
@@ -52,13 +49,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
-import { useTheme } from '../composables/useTheme'
 
-const router = useRouter()
-const { user, logout: doLogout } = useAuth()
-const { theme, toggle: toggleTheme } = useTheme()
+const { user } = useAuth()
 
 const STORAGE_KEY = 'zenfit.sidebarOpen'
 // Por defecto abierta en escritorio; recuerda la última preferencia
@@ -81,14 +74,10 @@ const items = [
   { to: '/habits', label: 'Hábitos' },
   { to: '/sleep', label: 'Sueño' },
   { to: '/profile', label: 'Perfil' },
+  { to: '/settings', label: 'Ajustes' },
 ]
 
 const initial = computed(() => (user.value?.fullName || 'U').trim().charAt(0).toUpperCase())
-
-const logout = async () => {
-  await doLogout()
-  router.push('/')
-}
 </script>
 
 <style scoped>
@@ -150,33 +139,31 @@ const logout = async () => {
   box-shadow: 0 6px 18px rgba(242,230,56,0.35);
 }
 
+/* user-box es un link clickable a /settings */
 .user-box {
   border-top: 1px solid rgba(255,255,255,0.12);
-  padding-top: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  padding-top: 14px;
+  text-decoration: none;
+  display: block;
+  border-radius: 12px;
+  transition: background 0.18s;
 }
-.user-row { display: flex; align-items: center; gap: 12px; padding: 0 6px; }
+.user-box:hover { background: rgba(0,0,0,0.22); }
+.user-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 8px;
+}
 .avatar {
   width: 38px; height: 38px; border-radius: 50%;
   background: var(--yellow); color: #1E3A8A;
   display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: 16px; flex-shrink: 0;
 }
-.user-meta { display: flex; flex-direction: column; overflow: hidden; }
+.user-meta { display: flex; flex-direction: column; overflow: hidden; flex: 1; min-width: 0; }
 .user-name { font-size: 14px; font-weight: 600; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .user-email { font-size: 11px; color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.theme-toggle, .logout {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.85);
-  padding: 11px; border-radius: 10px;
-  font-size: 13px; font-weight: 600; font-family: var(--font-body);
-  cursor: pointer; transition: background 0.18s, border-color 0.18s;
-}
-.theme-toggle:hover { background: rgba(242,230,56,0.18); border-color: rgba(242,230,56,0.5); color: var(--yellow); }
-.logout:hover { background: rgba(239,68,68,0.18); border-color: rgba(239,68,68,0.5); color: #FCA5A5; }
+.user-gear { font-size: 16px; opacity: 0.55; flex-shrink: 0; transition: opacity 0.18s, transform 0.18s; }
+.user-box:hover .user-gear { opacity: 1; transform: rotate(45deg); }
 
 /* ---- Contenido ---- */
 .content {

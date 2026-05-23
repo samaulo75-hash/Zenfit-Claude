@@ -82,46 +82,12 @@
         <span v-if="error" class="error">{{ error }}</span>
       </div>
     </form>
-
-    <!-- Cambiar contraseña -->
-    <section v-if="!loading" class="card pwd-card">
-      <header class="pwd-head">
-        <h2>Cambiar contraseña</h2>
-        <p>Necesitas saber tu contraseña actual. Si la has olvidado, <router-link to="/forgot-password">usa el flujo de recuperación</router-link>.</p>
-      </header>
-
-      <form class="form" @submit.prevent="changePwd">
-        <div class="grid">
-          <div class="field field-wide">
-            <label>Contraseña actual</label>
-            <input type="password" v-model="pwd.current" autocomplete="current-password" />
-          </div>
-          <div class="field">
-            <label>Nueva contraseña</label>
-            <input type="password" v-model="pwd.next" autocomplete="new-password" placeholder="Mínimo 8 caracteres" />
-          </div>
-          <div class="field">
-            <label>Repite la nueva contraseña</label>
-            <input type="password" v-model="pwd.confirm" autocomplete="new-password" />
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn-primary" type="submit" :disabled="pwdSaving || !pwdCanSubmit">
-            {{ pwdSaving ? 'Guardando…' : 'Actualizar contraseña' }}
-          </button>
-          <span v-if="pwdSavedMsg" class="saved">{{ pwdSavedMsg }}</span>
-          <span v-if="pwdError" class="error">{{ pwdError }}</span>
-        </div>
-      </form>
-    </section>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted, computed } from 'vue'
 import { profileService } from '../services/profileService'
-import { authService } from '../services/authService'
 
 const loading = ref(true)
 const saving = ref(false)
@@ -172,44 +138,6 @@ const save = async () => {
     saving.value = false
   }
 }
-
-// Cambiar contraseña
-const pwd = reactive({ current: '', next: '', confirm: '' })
-const pwdSaving = ref(false)
-const pwdError = ref('')
-const pwdSavedMsg = ref('')
-const pwdCanSubmit = computed(() =>
-  pwd.current.length > 0 &&
-  pwd.next.length >= 8 &&
-  pwd.next === pwd.confirm
-)
-
-const changePwd = async () => {
-  pwdError.value = ''
-  pwdSavedMsg.value = ''
-  if (pwd.next.length < 8) {
-    pwdError.value = 'La nueva contraseña debe tener al menos 8 caracteres'
-    return
-  }
-  if (pwd.next !== pwd.confirm) {
-    pwdError.value = 'Las contraseñas no coinciden'
-    return
-  }
-  pwdSaving.value = true
-  try {
-    await authService.changePassword({ currentPassword: pwd.current, newPassword: pwd.next })
-    pwdSavedMsg.value = '✓ Contraseña actualizada'
-    pwd.current = ''; pwd.next = ''; pwd.confirm = ''
-    setTimeout(() => (pwdSavedMsg.value = ''), 3000)
-  } catch (e) {
-    const data = e?.response?.data
-    pwdError.value = data?.message
-      || (data?.fieldErrors && Object.values(data.fieldErrors).flat().join(' · '))
-      || 'No se pudo cambiar la contraseña'
-  } finally {
-    pwdSaving.value = false
-  }
-}
 </script>
 
 <style scoped>
@@ -244,13 +172,6 @@ const changePwd = async () => {
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 .saved { color: #2563EB; font-size: 14px; font-weight: 600; }
 .error { color: #DC2626; font-size: 14px; }
-
-.pwd-card { margin-top: 24px; }
-.pwd-head { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
-.pwd-head h2 { font-family: var(--font-display); font-size: 24px; color: var(--dark); letter-spacing: 0.5px; }
-.pwd-head p { font-size: 13px; color: var(--gray); }
-.pwd-head a { color: var(--blue-mid); font-weight: 600; text-decoration: none; }
-.pwd-head a:hover { text-decoration: underline; }
 
 @media (max-width: 768px) {
   .page { padding: 32px 20px 40px; }

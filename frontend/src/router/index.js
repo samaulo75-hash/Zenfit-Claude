@@ -12,6 +12,7 @@ import HabitsView from '../views/HabitsView.vue'
 import SleepView from '../views/SleepView.vue'
 import WorkoutsView from '../views/WorkoutsView.vue'
 import DietsView from '../views/DietsView.vue'
+import SettingsView from '../views/SettingsView.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import AppLayout from '../layouts/AppLayout.vue'
 import { useAuth } from '../composables/useAuth'
@@ -39,7 +40,8 @@ const routes = [
       { path: 'habits', component: HabitsView },
       { path: 'sleep', component: SleepView },
       { path: 'workouts', component: WorkoutsView },
-      { path: 'diets', component: DietsView }
+      { path: 'diets', component: DietsView },
+      { path: 'settings', component: SettingsView }
     ]
   },
   { path: '/login', component: Login, meta: { guestOnly: true } },

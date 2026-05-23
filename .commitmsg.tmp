@@ -1,0 +1,25 @@
+feat(frontend): nueva seccion Ajustes que centraliza todas las configuraciones
+
+Vista /settings con todas las opciones de la cuenta agrupadas:
+
+- Mi cuenta: avatar + nombre + email
+- Cambiar contrasena: movido desde el Perfil (necesita la actual; enlace a
+  recuperar acceso si la has olvidado)
+- Apariencia: selector visual de tema claro / oscuro (movido desde la sidebar)
+- Preferencias de sueno: hora habitual de despertar (se sincroniza con la
+  calculadora de sueno via localStorage)
+- Notificaciones: placeholder con "Proximamente"
+- Cerrar sesion: con confirmacion (movido desde la sidebar)
+- Acerca de: version, autor, enlace al blog y a la pagina de inicio
+
+Cambios en la sidebar (AppLayout):
+- El user-box (avatar + nombre + email) ahora es un link clickable a /settings
+  con icono de engranaje que gira en hover
+- Eliminados los botones de tema y logout del user-box (ahora viven en Settings)
+- Anadido item "Ajustes" en el nav
+
+Cambios en ProfileView:
+- Eliminada la seccion "Cambiar contrasena" (duplicada con Settings) y sus
+  imports/estilos asociados
+
+Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
