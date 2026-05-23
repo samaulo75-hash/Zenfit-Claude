@@ -21,4 +21,19 @@ export const authService = {
     const { data } = await http.get('/users/me')
     return data
   },
+
+  async changePassword({ currentPassword, newPassword }) {
+    await http.post('/auth/change-password', { currentPassword, newPassword })
+  },
+
+  async forgotPassword(email) {
+    // Devuelve { token, expiresAt }. En esta version sin SMTP el token llega
+    // directo a la UI para que el usuario pueda fijar nueva contrasena.
+    const { data } = await http.post('/auth/forgot-password', { email })
+    return data
+  },
+
+  async resetPassword({ token, newPassword }) {
+    await http.post('/auth/reset-password', { token, newPassword })
+  },
 }

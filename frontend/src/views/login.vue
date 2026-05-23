@@ -32,6 +32,8 @@
           <span v-else>Cargando...</span>
         </button>
 
+        <router-link to="/forgot-password" class="forgot-link">¿Olvidaste tu contraseña?</router-link>
+
         <div class="error-msg" v-if="error">{{ error }}</div>
       </div>
     </div>
@@ -183,6 +185,16 @@ const login = async () => {
 }
 .submit-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
 .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.forgot-link {
+  font-size: 13px;
+  color: var(--blue-mid);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: -4px;
+}
+.forgot-link:hover { text-decoration: underline; }
 
 .error-msg {
   background: #FEF2F2;
