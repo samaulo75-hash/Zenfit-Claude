@@ -93,7 +93,8 @@ button { font-family: var(--font-body); cursor: pointer; }
 .dark .destacado-section,
 .dark .articulos-section { background: #0F172A; }
 .dark .destacado-card { background: #1F2937; box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
-.dark .destacado-body h2 { color: #F9FAFB; }
+.dark .destacado-body h2,
+.dark .destacado-body h3 { color: #F9FAFB; }
 .dark .destacado-body p { color: #CBD5E1; }
 .dark .leer { color: #F9FAFB; }
 .dark .section-title { color: #F9FAFB; }
