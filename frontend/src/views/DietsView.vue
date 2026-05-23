@@ -172,13 +172,15 @@ const mealLabel = (m) => ({
 .diet-card.clickable:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(30,58,138,0.12); border-color: var(--blue-pale); }
 .dc-head { display: flex; justify-content: space-between; align-items: center; }
 .dc-head-right { display: flex; align-items: center; gap: 10px; }
+/* Badges con colores hardcodeados (no usan vars que cambian en modo oscuro)
+   para que siempre tengan contraste en ambos temas. */
 .dc-goal {
   font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
-  background: var(--blue-light); color: var(--blue-mid); text-transform: uppercase; letter-spacing: 0.5px;
+  background: #1E3A8A; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.5px;
 }
-.dc-goal.lose_weight { background: var(--yellow-light); color: #1E3A8A; }
-.dc-goal.gain_muscle { background: var(--blue-light); color: var(--blue-mid); }
-.dc-goal.vegetarian, .dc-goal.vegan { background: #EFF6FF; color: #1E3A8A; }
+.dc-goal.lose_weight { background: #F2E638; color: #1E3A8A; }
+.dc-goal.gain_muscle { background: #1E3A8A; color: #FFFFFF; }
+.dc-goal.vegetarian, .dc-goal.vegan { background: #2563EB; color: #FFFFFF; }
 .dc-kcal { font-size: 12px; font-weight: 700; color: var(--gray); }
 .save-btn {
   background: none; border: none; cursor: pointer; font-size: 22px; line-height: 1;

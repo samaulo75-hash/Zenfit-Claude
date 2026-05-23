@@ -113,12 +113,14 @@ const formatDate = (d) => new Date(d).toLocaleDateString('es-ES', { day: 'numeri
   display: flex; flex-direction: column; gap: 12px; box-shadow: 0 2px 8px rgba(30,58,138,0.05);
 }
 .wc-head { display: flex; justify-content: space-between; align-items: center; }
+/* Badges con colores hardcodeados (no usan vars que cambian en modo oscuro)
+   para que siempre tengan contraste en ambos temas. */
 .wc-type {
   font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
-  background: var(--blue-light); color: var(--blue-mid); text-transform: uppercase; letter-spacing: 0.5px;
+  background: #1E3A8A; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.5px;
 }
-.wc-type.hiit, .wc-type.cardio { background: var(--yellow-light); color: #1E3A8A; }
-.wc-type.yoga, .wc-type.mobility { background: #EFF6FF; color: #1E3A8A; }
+.wc-type.hiit, .wc-type.cardio { background: #F2E638; color: #1E3A8A; }
+.wc-type.yoga, .wc-type.mobility, .wc-type.stretching, .wc-type.recovery { background: #2563EB; color: #FFFFFF; }
 .wc-premium { font-size: 11px; color: var(--yellow); font-weight: 700; }
 .wc-name { font-size: 20px; font-weight: 700; color: var(--dark); }
 .wc-desc { font-size: 13px; color: var(--gray); }
