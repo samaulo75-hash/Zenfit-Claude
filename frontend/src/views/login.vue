@@ -3,7 +3,7 @@
     <AuthBackButton />
     <div class="auth-left">
       <div class="auth-brand">
-        <img src="@/assets/logo-trim.png" alt="ZenFit" class="auth-brand-img" />
+        <img src="@/assets/logo-zen.png" alt="ZenFit" class="auth-brand-img" />
       </div>
       <h1 class="auth-headline">Tu cuerpo,<br/><span class="yellow">tu mejor proyecto.</span></h1>
       <p class="auth-sub">Más de 50.000 personas ya mejoran su salud con ZenFit cada día.</p>

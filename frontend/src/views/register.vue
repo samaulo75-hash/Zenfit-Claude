@@ -3,7 +3,7 @@
     <AuthBackButton />
     <div class="auth-left">
       <div class="auth-brand">
-        <img src="@/assets/logo-trim.png" alt="ZenFit" class="auth-brand-img" />
+        <img src="@/assets/logo-zen.png" alt="ZenFit" class="auth-brand-img" />
       </div>
       <h1 class="auth-headline">Empieza hoy.<br/><span class="yellow">Sin excusas.</span></h1>
       <p class="auth-sub">Crea tu cuenta y accede a planes de sueño, nutrición y entrenamiento totalmente personalizados.</p>

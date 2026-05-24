@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" :class="{ open }">
       <router-link to="/dashboard" class="brand" @click="closeOnMobile">
-        <img src="@/assets/logo-trim.png" alt="ZenFit" class="brand-img" />
+        <img src="@/assets/logo-zen.png" alt="ZenFit" class="brand-img" />
       </router-link>
 
       <nav class="nav">

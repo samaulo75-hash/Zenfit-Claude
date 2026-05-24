@@ -2,7 +2,7 @@
   <div class="auth-page">
     <div class="auth-left">
       <div class="auth-brand">
-        <img src="@/assets/logo-trim.png" alt="ZenFit" class="auth-brand-img" />
+        <img src="@/assets/logo-zen.png" alt="ZenFit" class="auth-brand-img" />
       </div>
       <h1 class="auth-headline">¿Olvidaste<br/><span class="yellow">tu contraseña?</span></h1>
       <p class="auth-sub">No pasa nada — te generamos un enlace seguro al momento para que puedas fijar una nueva.</p>

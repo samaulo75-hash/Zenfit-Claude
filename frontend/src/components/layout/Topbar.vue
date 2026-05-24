@@ -2,7 +2,7 @@
   <nav class="topbar" :class="{ scrolled: isScrolled }">
     <!-- Logo -->
     <router-link to="/" class="logo">
-      <img src="@/assets/logo-trim.png" alt="ZenFit" class="logo-img" />
+      <img src="@/assets/logo-zen.png" alt="ZenFit" class="logo-img" />
     </router-link>
 
     <!-- Nav links desktop -->
