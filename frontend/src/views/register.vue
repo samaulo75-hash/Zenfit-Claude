@@ -1,5 +1,6 @@
 <template>
   <div class="auth-page">
+    <AuthBackButton />
     <div class="auth-left">
       <div class="auth-brand">
         <img src="@/assets/logo-trim.png" alt="ZenFit" class="auth-brand-img" />
@@ -47,6 +48,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import AuthBackButton from '../components/auth/AuthBackButton.vue'
 
 const nombre = ref('')
 const email = ref('')
@@ -85,7 +87,7 @@ const register = async () => {
 </script>
 
 <style scoped>
-.auth-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.auth-page { position: relative; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
 
 .auth-left {
   background: linear-gradient(150deg, var(--blue) 0%, #1D4ED8 60%, #2563EB 100%);

@@ -1,5 +1,6 @@
 <template>
   <div class="auth-page">
+    <AuthBackButton />
     <div class="auth-left">
       <div class="auth-brand">
         <img src="@/assets/logo-trim.png" alt="ZenFit" class="auth-brand-img" />
@@ -44,6 +45,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+import AuthBackButton from '../components/auth/AuthBackButton.vue'
 
 const email = ref('')
 const password = ref('')
@@ -79,6 +81,7 @@ const login = async () => {
 
 <style scoped>
 .auth-page {
+  position: relative;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
