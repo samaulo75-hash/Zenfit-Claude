@@ -46,13 +46,24 @@ export default {
 .subtitulo { text-align: center; color: #666; font-size: 18px; margin-bottom: 50px; }
 .faq-grid { display: flex; flex-direction: column; gap: 15px; }
 .faq-item { background: #f8f9fa; border-radius: 15px; overflow: hidden; }
-.faq-pregunta { display: flex; justify-content: space-between; align-items: center; padding: 20px; cursor: pointer; transition: all 0.3s; }
+.faq-pregunta {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px;
+  padding: 22px 32px;
+  cursor: pointer; transition: all 0.3s;
+}
 .faq-pregunta:hover { background: #e9ecef; }
 .faq-pregunta h3 { color: #333; font-size: 18px; margin: 0; }
-.faq-pregunta i { color: #F2E638; font-size: 16px; }
-.faq-respuesta { padding: 0 20px 20px 20px; color: #666; line-height: 1.6; border-top: 1px solid #e0e0e0; }
+.faq-pregunta i { color: #F2E638; font-size: 16px; flex-shrink: 0; }
+.faq-respuesta {
+  padding: 18px 32px 24px 32px;
+  color: #666; line-height: 1.65;
+  border-top: 1px solid #e0e0e0;
+}
 @media (max-width: 768px) {
   .faq { padding: 50px 20px; }
+  .faq-pregunta { padding: 18px 20px; gap: 14px; }
   .faq-pregunta h3 { font-size: 16px; }
+  .faq-respuesta { padding: 14px 20px 18px 20px; }
 }
 </style>
