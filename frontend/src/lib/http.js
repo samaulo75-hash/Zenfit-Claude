@@ -1,7 +1,10 @@
 import axios from 'axios'
 import { storage } from './storage'
+import { onHttpRequestStart, onHttpResponse } from '../composables/useServerStatus'
 
 const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+
+export const baseApiURL = baseURL
 
 export const http = axios.create({
   baseURL,
@@ -11,12 +14,14 @@ export const http = axios.create({
   timeout: 60000,
 })
 
-// Adjunta Bearer token automáticamente
+// Adjunta Bearer token automáticamente + marca request lenta para mostrar banner
 http.interceptors.request.use((config) => {
   const token = storage.getAccessToken()
   if (token && !config.headers.Authorization) {
     config.headers.Authorization = `Bearer ${token}`
   }
+  // Si la peticion tarda mas de 4s, se enciende el banner "Conectando con el servidor..."
+  config._wakingCleanup = onHttpRequestStart(4000)
   return config
 })
 
@@ -40,8 +45,15 @@ const refreshSession = async () => {
 }
 
 http.interceptors.response.use(
-  (res) => res,
+  (res) => {
+    // La peticion respondio -> limpia su timer y apaga el banner si toca
+    res.config._wakingCleanup?.()
+    onHttpResponse()
+    return res
+  },
   async (error) => {
+    error.config?._wakingCleanup?.()
+    onHttpResponse()
     const original = error.config
     const status = error.response?.status
 

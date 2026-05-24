@@ -50,6 +50,19 @@ springdoc:
     path: /swagger-ui.html
     operations-sorter: method
 
+# Actuator: solo exponemos /health para warm-up y health check de Render.
+# show-details = never -> no filtra info de la BBDD ni del sistema.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+
 logging:
   level:
     root: INFO
