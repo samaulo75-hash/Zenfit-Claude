@@ -100,12 +100,13 @@ const register = async () => {
 .auth-brand {
   display: inline-flex;
   width: fit-content;
-  background: #fff;
-  padding: 16px;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
-.auth-brand-img { height: 72px; width: auto; display: block; }
+.auth-brand-img {
+  height: 90px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1) drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+}
 
 .offer-badge {
   display: inline-block;

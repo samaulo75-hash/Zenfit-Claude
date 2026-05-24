@@ -118,8 +118,9 @@ const initial = computed(() => (user.value?.fullName || 'U').trim().charAt(0).to
 
 .brand { display: flex; align-items: center; text-decoration: none; padding: 4px 8px 0; }
 .brand-img {
-  height: 52px; width: auto; display: block;
-  background: #fff; border-radius: 12px; padding: 10px;
+  height: 64px; width: auto; display: block;
+  /* Sidebar tiene fondo azul oscuro -> el logo se renderiza en blanco */
+  filter: brightness(0) invert(1);
   transition: transform 0.2s ease;
 }
 .brand:hover .brand-img { transform: scale(1.04); }

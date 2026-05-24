@@ -95,11 +95,14 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
 }
 .logo-img {
-  height: 34px;
+  height: 40px;
   width: auto;
   display: block;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
+/* En modo oscuro el fondo de la topbar es azul muy oscuro y el logo
+   tambien lo es -> lo renderizamos en blanco para que sea visible. */
+:global(.dark) .logo-img { filter: brightness(0) invert(1); }
 .logo:hover .logo-img { transform: scale(1.04); }
 
 .nav-links {

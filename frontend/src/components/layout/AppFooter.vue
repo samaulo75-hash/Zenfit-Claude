@@ -70,17 +70,16 @@
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  background: #fff;
-  padding: 16px;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
   margin-bottom: 20px;
 }
 .footer-logo-img {
-  height: 64px;
+  height: 72px;
   width: auto;
   display: block;
+  transition: filter 0.2s ease;
 }
+/* En modo oscuro el footer tiene fondo oscuro -> logo en blanco */
+:global(.dark) .footer-logo-img { filter: brightness(0) invert(1); }
 .footer-tagline {
   color: var(--gray);
   font-size: 14px;

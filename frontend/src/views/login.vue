@@ -98,12 +98,16 @@ const login = async () => {
 .auth-brand {
   display: inline-flex;
   width: fit-content;
-  background: #fff;
-  padding: 16px;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
-.auth-brand-img { height: 72px; width: auto; display: block; }
+/* Panel izquierdo azul -> logo renderizado en blanco */
+.auth-brand-img {
+  height: 90px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  /* sombra suave para que destaque sobre el azul */
+  filter: brightness(0) invert(1) drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+}
 .auth-headline {
   font-family: var(--font-display);
   font-size: clamp(40px, 5vw, 64px);
