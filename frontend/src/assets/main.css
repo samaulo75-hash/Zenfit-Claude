@@ -66,6 +66,9 @@ button { font-family: var(--font-body); cursor: pointer; }
 .dark .topbar.scrolled { border-bottom-color: #334155; box-shadow: 0 2px 16px rgba(0,0,0,0.4); }
 .dark .mobile-menu { background: #1F2937; border-color: #334155; }
 .dark .mobile-link { border-bottom-color: #334155; }
+/* Logo blanco sobre fondos oscuros (Topbar y Footer en modo oscuro) */
+.dark .logo-img,
+.dark .footer-logo-img { filter: brightness(0) invert(1); }
 
 /* ===== LANDING ===== */
 .dark .descripcion { background: #0F172A; }

@@ -100,9 +100,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   display: block;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
-/* En modo oscuro el fondo de la topbar es azul muy oscuro y el logo
-   tambien lo es -> lo renderizamos en blanco para que sea visible. */
-:global(.dark) .logo-img { filter: brightness(0) invert(1); }
+/* Nota: el override para modo oscuro vive en main.css (.dark .logo-img)
+   porque :global() dentro de <style scoped> puede comportarse de forma
+   inconsistente segun el parser CSS. */
 .logo:hover .logo-img { transform: scale(1.04); }
 
 .nav-links {

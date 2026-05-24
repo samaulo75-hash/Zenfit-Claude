@@ -78,8 +78,7 @@
   display: block;
   transition: filter 0.2s ease;
 }
-/* En modo oscuro el footer tiene fondo oscuro -> logo en blanco */
-:global(.dark) .footer-logo-img { filter: brightness(0) invert(1); }
+/* Nota: el override para modo oscuro vive en main.css (.dark .footer-logo-img) */
 .footer-tagline {
   color: var(--gray);
   font-size: 14px;
